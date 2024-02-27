@@ -1,0 +1,28 @@
+.tricker-container {
+  display: flex;
+  background-color: #003B63;
+}
+
+.tricker-wrapper {
+  width: 100%;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.news {
+  margin: 0;
+}
+
+.tricker-close-btn {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  margin-right: 120px;
+  &:hover {
+    cursor: pointer;
+  }
+}
