@@ -1,4 +1,4 @@
-import './App.css';
+import './style.scss';
 import 'normalize.css'; // Reset CSS
 import Homepage from './pages/homepage';
 

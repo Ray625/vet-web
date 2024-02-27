@@ -1,3 +1,5 @@
+@import '/src/style.scss';
+
 .tricker-container {
   display: flex;
   background-color: #003B63;
@@ -8,7 +10,7 @@
   height: 44px;
   text-align: center;
   line-height: 44px;
-  color: #FFFFFF;
+  color: $white;
   margin: 0;
 }
 
@@ -20,7 +22,7 @@
   font-size: 20px;
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: $white;
   margin-right: 120px;
   &:hover {
     cursor: pointer;
