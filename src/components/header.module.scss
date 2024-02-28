@@ -1,0 +1,56 @@
+@import '/src/style.scss';
+
+.wrapper {
+  padding: 18px 0;
+  background-color: $white;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 4px 20px 0px #00000014;
+}
+
+.logo {
+  height: 44px;
+  width: 156px;
+  background-image: url('../../public/logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+// navbar 連結共用樣式
+%link {
+  padding: 8px 20px;
+  text-decoration: none;
+  color: $dark_gray;
+  font-size: 16px;
+  position: relative;
+  &::after {
+    content: '';
+    width: 13.5px;
+    height: 12px;
+    background-image: url('../../public/footprint.svg');
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: none;
+  }
+
+  &:hover::after {
+    display: block;
+  }
+}
+
+.navbarList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  & a {
+    @extend %link;
+  }
+}
+
+.btnGroup a {
+  @extend %link;
+  margin-left:20px;
+}

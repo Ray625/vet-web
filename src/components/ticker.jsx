@@ -1,6 +1,6 @@
 import styles from './ticker.module.scss' ;
 
-const Ticker =()=>{
+const Ticker = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

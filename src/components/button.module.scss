@@ -1,0 +1,22 @@
+@import '/src/style.scss';
+
+.primaryBtn {
+  width: 150px;
+  height: 44px;
+  border: none;
+  border-radius: 25px;
+  color: $white;
+  background: linear-gradient(90deg, $primary_orange 0%, $dark_orange 100%);
+  &:hover {
+    cursor: pointer;
+    background: $dark_orange;
+    & .footprint {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.footprint {
+  margin-left: 12px;
+  transition: transform .5s ease;
+}
