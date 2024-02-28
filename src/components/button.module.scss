@@ -7,6 +7,7 @@
   border-radius: 25px;
   color: $white;
   background: linear-gradient(90deg, $primary_orange 0%, $dark_orange 100%);
+  user-select: none;
   &:hover {
     cursor: pointer;
     background: $dark_orange;

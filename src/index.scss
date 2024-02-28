@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 @import '/src/style.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans TC", sans-serif;
@@ -12,4 +16,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html {
+  background-color: #ececec;
 }

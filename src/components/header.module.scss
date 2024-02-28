@@ -1,10 +1,11 @@
 @import '/src/style.scss';
 
 .wrapper {
-  padding: 18px 0;
+  height: 80px;
   background-color: $white;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   box-shadow: 0px 4px 20px 0px #00000014;
 }
 
@@ -18,39 +19,86 @@
 
 // navbar 連結共用樣式
 %link {
-  padding: 8px 20px;
+  padding: 8px 16px; 
   text-decoration: none;
   color: $dark_gray;
   font-size: 16px;
   position: relative;
+  user-select: none;
   &::after {
     content: '';
     width: 13.5px;
     height: 12px;
     background-image: url('../../public/footprint.svg');
     position: absolute;
-    left: 0;
+    left: -6px;
     top: 50%;
     transform: translate(0, -50%);
     display: none;
   }
-
   &:hover::after {
     display: block;
   }
 }
 
 .navbarList {
+  height: 100%; // 把下面推出去讓滑鼠hover向下移動的過程不會讓下拉選單消失
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  & a {
+  gap: 30px;
+  > a {
     @extend %link;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &:hover {
+      & .dropdownMenu {
+        display: flex;
+      }
+    }
   }
 }
 
-.btnGroup a {
+.btnGroup > a {
   @extend %link;
   margin-left:20px;
+}
+
+.dropdownMenu {
+  border-radius: 0 0 16px 16px;
+  background-color: $white;
+  margin: 0;
+  padding: 0;
+  width: 148px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  left: -27px;
+  &:hover {
+    display: flex;
+  }
+  > :last-child {
+    margin-bottom: 8px;
+  }
+  & li {
+    width: 132px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    &:hover {
+      background-color: $hover_gray;
+    }
+    & > a {
+      align-self: center;
+      text-decoration: none;
+      color: $dark_gray;
+    }
+  }
 }
