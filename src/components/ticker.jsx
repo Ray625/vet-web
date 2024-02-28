@@ -1,12 +1,12 @@
-import './ticker.scss' ;
+import styles from './ticker.module.scss' ;
 
 const Ticker =()=>{
   return (
-    <div className="tricker-container">
-      <div className="tricker-wrapper">
-        <p className="news">2024春節營業時間調整公告</p>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <p className={styles.news}>2024春節營業時間調整公告</p>
       </div>
-        <button className="tricker-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <button className={styles.closeBtn} aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
     </div>
   )
 }
