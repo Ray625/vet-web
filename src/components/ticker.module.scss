@@ -1,4 +1,4 @@
-@import '/src/style.scss';
+@use '/src/style.scss';
 
 .container {
   display: flex;
@@ -11,7 +11,7 @@
   height: 44px;
   text-align: center;
   line-height: 44px;
-  color: $white;
+  color: style.$white;
   margin: 0;
 }
 
@@ -23,7 +23,7 @@
   font-size: 20px;
   border: none;
   background-color: transparent;
-  color: $white;
+  color: style.$white;
   position: absolute;
   top: 50%;
   right: 10%;

@@ -1,12 +1,12 @@
-@import '/src/style.scss';
+@use '/src/style.scss';
 
 .wrapper {
   height: 80px;
-  background-color: $white;
+  background-color: style.$white;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0px 4px 20px 0px #00000014;
+  box-shadow: style.$shadow;
 }
 
 .logo {
@@ -21,8 +21,8 @@
 %link {
   padding: 8px 16px; 
   text-decoration: none;
-  color: $dark_gray;
-  font-size: 16px;
+  color: style.$dark_gray;
+  font-size: style.$font-size;
   position: relative;
   user-select: none;
   &::after {
@@ -67,7 +67,7 @@
 
 .dropdownMenu {
   border-radius: 0 0 16px 16px;
-  background-color: $white;
+  background-color: style.$white;
   margin: 0;
   padding: 0;
   width: 148px;
@@ -77,13 +77,14 @@
   position: absolute;
   top: 100%;
   left: -27px;
+  box-shadow: style.$shadow;
   &:hover {
     display: flex;
   }
   > :last-child {
     margin-bottom: 8px;
   }
-  & li {
+  li {
     width: 132px;
     padding: 16px 24px;
     border-radius: 8px;
@@ -93,12 +94,12 @@
     text-align: center;
     list-style: none;
     &:hover {
-      background-color: $hover_gray;
+      background-color: style.$hover_gray;
     }
-    & > a {
+    > a {
       align-self: center;
       text-decoration: none;
-      color: $dark_gray;
+      color: style.$dark_gray;
     }
   }
 }

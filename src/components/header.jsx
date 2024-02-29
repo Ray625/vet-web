@@ -1,6 +1,14 @@
 import styles from './header.module.scss';
 import { PrimaryButton } from './button';
 
+const DropdownMeun = ({linkTo, menuList}) => {
+  return (
+    <ul className={styles.dropdownMenu}>
+      {menuList.map((item) => <li><a href={'/' + linkTo}>{item}</a></li>)}
+    </ul>  
+  )
+}
+
 const Header = () => {
   const handleReserveBtn = () => {
     alert('you hit the reserve btn')
@@ -16,27 +24,22 @@ const Header = () => {
           <a href="/" >首頁</a>
           <a href="/about">
             關於我們
-            <ul className={styles.dropdownMenu}>
-              <li><a href="/about">經營理念</a></li>
-              <li><a href="/about">專業團隊</a></li>
-              <li><a href="/about">診所資訊</a></li>
-            </ul>
+            <DropdownMeun 
+              linkTo={'about'}
+              menuList={['經營理念','專業團隊','診所資訊']} />
           </a>
           <a href="/service">
             服務項目
-            <ul className={styles.dropdownMenu}>
-              <li><a href="/service">內科</a></li>
-              <li><a href="/service">外科</a></li>
-              <li><a href="/service">其他專科</a></li>
-            </ul>
+            <DropdownMeun 
+              linkTo={'service'}
+              menuList={['內科','外科','其他專科']} />
             </a>
           <a href="/news">最新消息</a>
           <a href="/contact-us">
             聯絡我們
-            <ul className={styles.dropdownMenu}>
-              <li><a href="/contact-us">交通指南</a></li>
-              <li><a href="/contact-us">聯絡表單</a></li>
-            </ul>
+            <DropdownMeun 
+              linkTo={'contact-us'}
+              menuList={['交通指南','聯絡表單']} />
             </a>
         </div>
         <div className={styles.btnGroup}>

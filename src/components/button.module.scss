@@ -1,16 +1,16 @@
-@import '/src/style.scss';
+@use '/src/style.scss';
 
 .primaryBtn {
   width: 150px;
   height: 44px;
   border: none;
   border-radius: 25px;
-  color: $white;
-  background: linear-gradient(90deg, $primary_orange 0%, $dark_orange 100%);
+  color: style.$white;
+  background: linear-gradient(90deg, style.$primary_orange 0%, style.$dark_orange 100%);
   user-select: none;
   &:hover {
     cursor: pointer;
-    background: $dark_orange;
+    background: style.$dark_orange;
     & .footprint {
       transform: rotate(45deg);
     }

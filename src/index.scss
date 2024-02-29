@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
-@import '/src/style.scss';
 
 * {
   box-sizing: border-box;
@@ -10,7 +9,6 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $dark_gray;
 }
 
 code {
