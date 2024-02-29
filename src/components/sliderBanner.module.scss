@@ -1,0 +1,111 @@
+@use '/src/style.scss';
+
+%bannerBgImg {
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    // 做遮罩置於背景上方
+    content: '';
+    width: 60%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    z-index: 2;
+  }
+}
+
+.wrapper {
+  @extend %bannerBgImg;
+  background-image: url('../../public/banner/banner_1.jpg');
+}
+
+.wrapper_2 {
+  @extend %bannerBgImg;
+  background-image: url('../../public/banner/banner_2.jpg');
+}
+
+
+
+.bannerBody {
+  width: 650px;
+  height: 300px;
+  margin-left: 210px;
+  margin-top: 180px;
+  position: relative;
+  z-index: 3;
+}
+
+.title {
+  color: style.$white;
+  font-size: 24px;
+}
+
+.enTitle {
+  margin: 44px 0 50px 0;
+  color: style.$white;
+  font-size: 60px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  span {
+    color: style.$primary_orange;
+  }
+}
+
+
+.footprint {
+  margin-left: 24px;
+}
+
+// 幻燈片上的箭頭按鈕
+
+%arrowBtn {
+  width: 52px;
+  height: 52px;
+  color: style.$white;
+  background-color: style.$dark_orange;
+  font-size: 18px;
+  border-radius: 0 50% 50% 0;
+  border: none;
+  transition: all 0.3s ease;
+  z-index: 5;
+  &:hover {
+    cursor: pointer;
+    color: style.$dark_orange;
+    background-color: style.$white;
+  }
+}
+
+.prevArrowBtn {
+  @extend %arrowBtn;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.nextArrowBtn {
+  @extend %arrowBtn;
+  transform: rotate(180deg);
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+:global(.slick-dots li button:before) {
+  color: #FFF;
+}
+
+:global(.slick-dots li.slick-active button:before) {
+  color: #FFF;
+}
+
+:global(.slick-dots) {
+  position: absolute;
+  bottom: 20px;
+}

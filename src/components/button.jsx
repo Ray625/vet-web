@@ -1,12 +1,21 @@
 import styles from './button.module.scss';
 
-const PrimaryButton = ({title, onClick}) => {
+const PrimaryButton = ({ title, onClick }) => {
   return (
     <button className={styles.primaryBtn} onClick={onClick}>
       {title}
-      <object data="footprint_white.svg" width="13.5" height="12" className={styles.footprint} aria-label="footprint"> </object>
+      <object data="/svg/footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
     </button>
   )
 }
 
-export { PrimaryButton };
+const OutlineButton = ({ title, onClick }) => {
+  return (
+    <button className={styles.outlineBtn} onClick={onClick}>
+      {title}
+      <object data="/svg/footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
+    </button>
+  )
+}
+
+export { PrimaryButton, OutlineButton };

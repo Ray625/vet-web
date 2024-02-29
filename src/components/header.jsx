@@ -10,7 +10,7 @@ const DropdownMeun = ({linkTo, menuList}) => {
 }
 
 const Header = () => {
-  const handleReserveBtn = () => {
+  const handleReserveBtnClick = () => {
     alert('you hit the reserve btn')
   }
 
@@ -43,7 +43,7 @@ const Header = () => {
             </a>
         </div>
         <div className={styles.btnGroup}>
-          <PrimaryButton title={'立即預約'} onClick={handleReserveBtn}/>
+          <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
           <a href="/login">登入</a>
         </div>
       </div>
