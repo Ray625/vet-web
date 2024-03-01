@@ -7,6 +7,8 @@
   background-position: center;
   position: relative;
   z-index: 1;
+  display: flex !important; // 蓋掉slick套件寫的行內style
+  align-items: center;
 
   &::before {
     // 做遮罩置於背景上方
@@ -37,7 +39,6 @@
   width: 650px;
   height: 300px;
   margin-left: 210px;
-  margin-top: 180px;
   position: relative;
   z-index: 3;
 }
