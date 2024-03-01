@@ -97,15 +97,48 @@
   right: 0;
 }
 
-:global(.slick-dots li button:before) {
-  color: #FFF;
+// Banner下方分頁器點點，修改react-slick套件的樣式
+%dots {
+  position: relative;
+  background-color: transparent;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 0;
+  opacity: 1;
 }
 
-:global(.slick-dots li.slick-active button:before) {
-  color: #FFF;
+%dots_before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #FFF;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+:global(.slick-dots li button) {
+  @extend %dots;
+}
+
+:global(.slick-dots li button::before) {
+  @extend %dots_before;
+}
+
+:global(.slick-dots li.slick-active button) {
+  @extend %dots;
+  border: 1px solid style.$white;
+}
+
+:global(.slick-dots li.slick-active button::before) {
+  @extend %dots_before;
 }
 
 :global(.slick-dots) {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
 }

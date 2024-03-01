@@ -53,7 +53,7 @@ const SliderBanner = () => {
         <div className={styles.wrapper_2}>
           <div className={styles.bannerBody}>
             <p className={styles.title}>寵物的健康是我們的首要任務</p>
-            <p className={styles.enTitle}>Your Pet's Health is Our Priority 
+            <p className={styles.enTitle}>Your Pet's Health is Our Priority
             <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
             </p>
             <OutlineButton title={'瞭解更多'} onClick={handleMoreBtnClick} />
