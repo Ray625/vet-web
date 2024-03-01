@@ -1,4 +1,4 @@
-import styles from './header.module.scss';
+import styles from '../styles/header.module.scss';
 import { PrimaryButton } from './button';
 
 const DropdownMeun = ({linkTo, menuList}) => {

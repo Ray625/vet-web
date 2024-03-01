@@ -1,4 +1,4 @@
-import styles from './button.module.scss';
+import styles from '../styles/button.module.scss';
 
 const PrimaryButton = ({ title, onClick }) => {
   return (

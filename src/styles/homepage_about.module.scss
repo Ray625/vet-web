@@ -1,0 +1,93 @@
+@use '/src/styles/style.scss';
+
+.wrapper {
+  width: 100%;
+  height: calc(100vh - 124px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.img {
+  width: 580px;
+  height: 450px;
+  background-image: url('../../public/img/about_img.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.body {
+  width: 460px;
+}
+
+.title {
+  font-size: style.$title-font-size;
+  color: style.$primary_orange;
+}
+
+.footprint {
+  width: 18px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-size: style.$subtitle-font-size;
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  line-height: 43.5px;
+}
+
+.content {
+  margin-top: 36px;
+  font-size: style.$font-size;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.iconList {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.iconGroup {
+  display: flex;
+  align-items: center;
+  margin-top: 48px;
+  p {
+    font-size: style.$font-size;
+  }
+}
+
+%icon-wrapper {
+  width: 44px;
+  height: 44px;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.iconHeartWrapper {
+  @extend %icon-wrapper;
+  background-color: style.$icon_orange;
+}
+
+.iconTeamWrapper {
+  @extend %icon-wrapper;
+  background-color: style.$icon_blue;
+}
+
+.iconToolWrapper {
+  @extend %icon-wrapper;
+  background-color: style.$icon_green;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

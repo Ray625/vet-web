@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import styles from './sliderBanner.module.scss'
+import styles from '../styles/slider_banner.module.scss'
 import { OutlineButton } from './button';
 
 const SliderBanner = () => {
@@ -39,7 +39,7 @@ const SliderBanner = () => {
   };
 
   return (
-    <div className="slider-container">
+    <section className="slider-container">
       <Slider {...settings}>
         <div className={styles.wrapper}>
           <div className={styles.bannerBody}>
@@ -60,7 +60,7 @@ const SliderBanner = () => {
           </div>
         </div>
       </Slider>
-    </div>
+    </section>
   )
 }
 
