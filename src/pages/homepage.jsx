@@ -2,6 +2,7 @@ import Ticker from "../components/ticker"
 import Header from "../components/header"
 import SliderBanner from "../components/slider_banner"
 import AboutSection from "../components/homepage_about"
+import OfferSection from "../components/homepage_offer"
 import './homepage.scss'
 
 const Homepage = () => {
@@ -11,6 +12,7 @@ const Homepage = () => {
       <Header />
       <SliderBanner />
       <AboutSection />
+      <OfferSection />
     </div>
   )
 }

@@ -1,0 +1,109 @@
+@use '/src/styles/style.scss';
+
+.wrapper {
+  width: 100%;
+  height: calc(100vh - 124px);
+  background-color: style.$white;
+  background-image: url('../../public/img/offer_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  width: 80%;
+  height: 90%;
+  background-image: url('../../public/img/offer_footprint_background.png');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10vh;
+}
+
+.footprint {
+  width: 18px;
+  height: 20px;
+}
+
+.title {
+  font-size: style.$title-font-size;
+  color: style.$primary_orange;
+  margin: 8px 0 0 0;
+}
+
+.subtitle {
+  margin: 16px 0 44px 0;
+  font-size: style.$subtitle-font-size;
+  font-weight: 400;
+  line-height: 43.5px;
+}
+
+.cardList {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.leftCard,
+.rightCard {
+  width: 480px;
+  border-radius: 20px;
+  background: style.$white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 56px 32px 56px;
+  overflow: hidden;
+  &::before {
+      content: '';
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+    }
+}
+
+.leftCard {
+  margin-bottom: 22px;
+  position: relative;
+  &::before {
+    width: 225px;
+    height: 213px;
+    background-image: url('../../public/img/offer_heart_background.png');
+    position: absolute;
+    top: 55px;
+    left: -10px;
+  }
+}
+
+.rightCard {
+  margin-top: 22px;
+  position: relative;
+  &::before {
+      width: 212px;
+      height: 212px;
+      background-image: url('../../public/img/offer_bone_background.png');
+      position: absolute;
+      top: 55px;
+      left: -10px;
+    }
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 0 28px 0;
+}
+
+.cardContent {
+  font-size: 16px;
+  line-height: 28px;
+  margin: 0 0 24px 0;
+}
+
+.cardBtn {
+  font-size: 14px;
+  color: style.$primary_blue;
+  align-self: flex-end;
+}

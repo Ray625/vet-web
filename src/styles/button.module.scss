@@ -38,3 +38,23 @@
   margin-left: 12px;
   transition: transform .5s ease;
 }
+
+.moreBtnLabel:hover {
+  cursor: pointer;
+}
+
+.moreBtn {
+  width: 40px;
+  height: 40px;
+  background-color: style.$primary_blue;
+  border: 1px solid style.$primary_blue;
+  border-radius: 50%;
+  color: style.$white;
+  margin-left: 12px;
+  transition: all 0.2s ease-out;
+  &:hover {
+    cursor: pointer;
+    background-color: style.$white;
+    color: style.$primary_blue
+  }
+}

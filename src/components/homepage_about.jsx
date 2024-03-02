@@ -22,7 +22,7 @@ const AboutSection = () => {
             About us
           </h2>
           <h3 className={styles.subtitle}>
-            為愛與關懷而生,<br/>
+            為愛與關懷而生，<br/>
             致力於寵物醫療健康
           </h3>
           <p className={styles.content}>
