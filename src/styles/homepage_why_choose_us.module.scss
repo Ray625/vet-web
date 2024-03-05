@@ -1,0 +1,82 @@
+@use '/src/styles/style.scss';
+
+.container {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../public/img/reason_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom 30%;
+  position: relative;
+  &::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+}
+
+.wrapper {
+  width: 72%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: style.$white;
+  position: relative;
+  z-index: 2;
+}
+
+.titleGroup {
+  margin: auto 0 auto 80px;
+}
+
+.title {
+  font-size: style.$title-font-size;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.footprint {
+  width: 18px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.subtitle {
+  font-size: style.$subtitle-font-size;
+  font-weight: 400;
+  margin: 0;
+}
+
+.body {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.num {
+  margin: 0 0 8px 0; 
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.describe {
+  font-size: 16px;
+  margin: 0;
+}

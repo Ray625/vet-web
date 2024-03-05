@@ -3,6 +3,8 @@ import Header from "../components/header"
 import SliderBanner from "../components/slider_banner"
 import AboutSection from "../components/homepage_about"
 import OfferSection from "../components/homepage_offer"
+import ReasonSection from "../components/homepage_why_choose_us"
+import ReviewsSection from "../components/homepage_reviews"
 import './homepage.scss'
 
 const Homepage = () => {
@@ -13,6 +15,8 @@ const Homepage = () => {
       <SliderBanner />
       <AboutSection />
       <OfferSection />
+      <ReasonSection />
+      <ReviewsSection />
     </div>
   )
 }
