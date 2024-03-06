@@ -43,19 +43,23 @@ const SliderBanner = () => {
       <Slider {...settings}>
         <div className={styles.wrapper}>
           <div className={styles.bannerBody}>
-            <p className={styles.title}>像家人一樣呵護您的寵物</p>
-            <p className={styles.enTitle}>Caring for your pets like <span>family</span> 
-            <object data="/svg/home_footprint.svg" className={styles.footprint} aria-label="footprint"> </object>
-            </p>
+            <div className={styles.titleGroup}>
+              <p className={styles.title}>像家人一樣呵護您的寵物</p>
+              <p className={styles.enTitle}>Caring for your pets like <span>family</span> 
+              <object data="/svg/home_footprint.svg" className={styles.footprint} aria-label="footprint"> </object>
+              </p>
+            </div>
             <OutlineButton title={'瞭解更多'} onClick={handleMoreBtnClick} />
           </div>
         </div>
         <div className={styles.wrapper_2}>
           <div className={styles.bannerBody}>
-            <p className={styles.title}>寵物的健康是我們的首要任務</p>
-            <p className={styles.enTitle}>Your Pet's Health is Our Priority
-            <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
-            </p>
+            <div className={styles.titleGroup}>
+              <p className={styles.title}>寵物的健康是我們的首要任務</p>
+              <p className={styles.enTitle}>Your Pet's Health is Our Priority
+              <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
+              </p>
+            </div>
             <OutlineButton title={'瞭解更多'} onClick={handleMoreBtnClick} />
           </div>
         </div>

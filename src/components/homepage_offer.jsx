@@ -1,5 +1,5 @@
 import styles from '../styles/homepage_offer.module.scss'
-import { PrimaryButton, MoreButton } from './button'
+import { PrimaryButton, LabelMoreButton } from './button'
 
 const Card = ({ className, title, content, onClick}) => {
   return (
@@ -7,7 +7,7 @@ const Card = ({ className, title, content, onClick}) => {
       <h4 className={styles.cardTitle}>{title}</h4>
       <p className={styles.cardContent}>{content}</p>
       <div className={styles.cardBtn}>
-        <MoreButton label={'See more'} onClick={onClick}/>
+        <LabelMoreButton label={'See more'} onClick={onClick}/>
       </div>
     </div>
   )
@@ -23,7 +23,7 @@ const OfferSection = () => {
   }
 
   return (
-    <section className='offer-container'>
+    <section className={styles.container}>
       <div className={styles.wrapper}>        
         <div className={styles.body}>
           <div className={styles.icon}>

@@ -7,8 +7,6 @@
   background-position: center;
   position: relative;
   z-index: 1;
-  display: flex !important; // 蓋掉slick套件寫的行內style
-  align-items: center;
 
   &::before {
     // 做遮罩置於背景上方
@@ -34,13 +32,20 @@
 }
 
 
-
 .bannerBody {
-  width: 650px;
-  height: 300px;
-  margin-left: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
   z-index: 3;
+  width: style.$wrapper_width;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.titleGroup {
+  max-width: 650px;
 }
 
 .title {

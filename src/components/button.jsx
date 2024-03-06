@@ -18,23 +18,15 @@ const OutlineButton = ({ title, onClick }) => {
   )
 }
 
-const MoreButton = ({ onClick, label}) => { 
-  if (!label) {
-    return (
-      <button className={styles.moreBtn} onClick={onClick}>
-          <i class="fa-solid fa-arrow-right"></i>
-      </button>
-    )
-  }
-
+const LabelMoreButton = ({ onClick, label}) => { 
   return (
     <label className={styles.moreBtnLabel}>
       {label}
-      <button className={styles.moreBtn} onClick={onClick}>
+      <button className={styles.labelMoreBtn} onClick={onClick}>
           <i class="fa-solid fa-arrow-right"></i>
       </button>
     </label>
   )
 }
-
-export { PrimaryButton, OutlineButton, MoreButton };
+  
+export { PrimaryButton, OutlineButton, LabelMoreButton };

@@ -1,0 +1,144 @@
+@use '/src/styles/style.scss';
+
+.container {
+  height: 76vh;
+  width: 100%;
+  margin: 0;
+  padding: 125px;
+  background-color: #F3F1EE;
+  position: relative;
+  &::before{
+    content: '';
+    width: 473px;
+    height: 503px;
+    background-image: url(../../public/img/news_background.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    opacity: 0.5;
+    z-index: 1;
+  }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footprint {
+  width: 18px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.titleGroup {
+  margin: 0 24px 0 0;
+}
+
+.title {
+  font-size: style.$title-font-size;
+  color: style.$primary_orange;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 16px 0 36px 0;
+  font-size: style.$subtitle-font-size;
+  font-weight: 400;
+  line-height: 43.5px;
+}
+
+%btn-hover {
+  background-color: style.$white;
+  color: style.$primary_blue;
+  transform: scale(1.075, 1);
+  transform: translate(10px, 0);
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  width: 672px;
+  height: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: style.$white;
+  border-radius: 20px;
+  &:hover {
+    cursor: pointer;
+    .moreBtn {
+      @extend %btn-hover;   
+    }
+  } 
+}
+
+.moreBtn {
+  composes: labelMoreBtn from './button.module.scss';
+  margin: 0 32px 0 0;
+  line-height: 1;
+  &:hover {
+    @extend %btn-hover;
+    cursor: pointer;
+  }
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  flex-grow: 1;
+}
+
+%cardTag {
+  width: fit-content;
+  padding: 8px 12px;
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.cardTagPost {
+  @extend %cardTag;
+  color: style.$icon_blue;
+  background: #3A86BA33;
+}
+
+.cardTagInfo {
+  @extend %cardTag;
+  color: style.$icon_orange;
+  background: #FE7E6233;
+}
+
+.cardTagKnow {
+  @extend %cardTag;
+  color: style.$icon_green;
+  background: #6CAF8F33;
+}
+
+.cardTime {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: style.$dark_gray;
+}
+
+.cardTitle {
+  margin: 0 0 8px 0;
+  font-size: style.$font-size;
+}
+
+

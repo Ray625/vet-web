@@ -36,6 +36,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: style.$wrapper_width;
+  margin: 0 auto;
 }
 
 .titleGroup {
@@ -65,7 +67,7 @@
 
 .cardSlider {
   padding-top: 60px;
-  width: 60%;
+  max-width: 1080px;
   height: 280px;
   ul {
     position: absolute;

@@ -13,7 +13,7 @@ const IconGroup = ({className, svg, content}) => {
 
 const AboutSection = () => {
   return (
-    <section className='about-container'>
+    <section className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.img}></div>
         <div className={styles.body}>

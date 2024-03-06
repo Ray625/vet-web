@@ -43,14 +43,14 @@
   cursor: pointer;
 }
 
-.moreBtn {
+.labelMoreBtn {
   width: 40px;
   height: 40px;
+  margin-left: 12px;
   background-color: style.$primary_blue;
   border: 1px solid style.$primary_blue;
   border-radius: 50%;
   color: style.$white;
-  margin-left: 12px;
   transition: all 0.2s ease-out;
   &:hover {
     cursor: pointer;
@@ -58,3 +58,4 @@
     color: style.$primary_blue
   }
 }
+
