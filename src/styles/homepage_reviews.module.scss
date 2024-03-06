@@ -65,7 +65,7 @@
 
 .cardSlider {
   padding-top: 60px;
-  width: 100%;
+  width: 60%;
   height: 280px;
   ul {
     position: absolute;
@@ -78,10 +78,10 @@
   height: 234px;
   border-radius: 20px;
   background-color: style.$white;
-  margin: 0 16px;
+  margin: 0 auto;
   padding: 32px 30px 32px 30px;
   position: relative;
-  box-shadow: 0px 0px 12px 0px #0000001F;
+  box-shadow: 0px 0px 20px 0px #0000001F;
 }
 
 .iconDot {
