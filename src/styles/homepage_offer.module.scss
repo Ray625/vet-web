@@ -57,13 +57,14 @@
 
 .leftCard,
 .rightCard {
-  width: 480px;
-  border-radius: 20px;
-  background: style.$white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 480px;
   padding: 56px 56px 32px 56px;
+  border-radius: 20px;
+  background: style.$white;
+  box-shadow: 20px 20px 40px 0px #0000000A;
   overflow: hidden;
   &::before {
       content: '';
