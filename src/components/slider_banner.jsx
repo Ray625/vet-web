@@ -56,7 +56,7 @@ const SliderBanner = () => {
           <div className={styles.bannerBody}>
             <div className={styles.titleGroup}>
               <p className={styles.title}>寵物的健康是我們的首要任務</p>
-              <p className={styles.enTitle}>Your Pet's Health is Our Priority
+              <p className={styles.enTitle}>Your pet's health is our priority
               <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
               </p>
             </div>

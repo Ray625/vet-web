@@ -6,7 +6,7 @@ const IconGroup = ({className, svg, content}) => {
       <span className={styles.iconWrapper}>
         <object data={`/svg/icon_` + svg +`.svg`} className={className} aria-label="icon"> </object>
       </span>
-      <p>{content}</p>
+      <p className={styles.infoContent}>{content}</p>
     </div>
   )
 }

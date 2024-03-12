@@ -4,43 +4,27 @@
   position: relative;
   z-index: 0;
   width: 100%;
-  height: 80vh;
-  padding: 124px;
+  height: fit-content;
+  padding: 44px 24px;
   background-image: url(../../public/img/info_background.png);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom 220% center;
+  background-size: contain;
+  background-position: bottom center;
   background-color: style.$white;
-  &::before {
-    content: '';
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    bottom: 5%;
-    width: 800px;
-    height: 300px;
-    background-image: url(../../public/img/info_background_left.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
 }
 
 .wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
-  width: style.$wrapper_width;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
 }
 
 .infoSide {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: flex-start;
 }
 
 .titleGroup {
@@ -49,32 +33,32 @@
 }
 
 .footprint {
-  width: 18px;
-  height: 20px;
-  margin-right: 12px;
+  width: 14px;
+  height: 16px;
+  margin-right: 8px;
 }
 
 .title {
-  font-size: style.$title-font-size;
+  font-size: style.$mobile-title-font-size;
   color: style.$primary_orange;
   margin: 0;
 }
 
 .subtitle {
-  margin: 16px 0 0 0;
-  font-size: style.$subtitle-font-size;
+  margin: 12px 0 0 0;
+  font-size: style.$mobile-subtitle-font-size;
   font-weight: 400;
-  line-height: 43.5px;
+  line-height: 38.5px;
 }
 
 .describe {
-  max-width: 280px;
-  margin: 36px 0 0 0;
+  max-width: 340px;
+  margin: 28px 0 0 0;
   line-height: 28px;
 }
 
 .infoGroup {
-  margin-bottom: 65px;
+  margin: 32px 0;
 }
 
 .iconGroup {
@@ -111,15 +95,95 @@
   height: 15px;
 }
 
+.infoContent {
+  margin: 12px 0;
+}
+
 .mapSide {
-  border: 16px solid white;
+  border: 12px solid white;
   border-radius: 20px;
+  background-color: white;
   box-shadow: 0px 0px 40px 0px #0000001F;
 }
 
 .googleMap {
-  width: 672px;
-  height: 518px;
+  width: 80vw;
+  height: 32vh;
   border: none;
   user-select: none;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    height: 80vh;
+    padding: 124px;
+    background-size: cover;
+    background-position: bottom 220% center;
+
+    &::before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      bottom: 5%;
+      width: 800px;
+      height: 300px;
+      background-image: url(../../public/img/info_background_left.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .wrapper {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 24px;
+    width: style.$wrapper_width;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .infoSide {
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .footprint {
+    width: 18px;
+    height: 20px;
+    margin-right: 12px;
+  }
+  
+  .title {
+    font-size: style.$title-font-size;
+  }
+
+  .subtitle {
+    margin: 16px 0 0 0;
+    font-size: style.$subtitle-font-size;
+    line-height: 43.5px;
+  }
+
+  .describe {
+    max-width: 280px;
+    margin: 36px 0 0 0;
+  }
+
+  .infoGroup {
+    margin: 0 0 65px 0;
+  }
+
+  .mapSide {
+    border: 16px solid white;
+  }
+
+  .googleMap {
+    width: 672px;
+    height: 518px;
+  }
+
+  .infoContent {
+    margin: 16px 0;
+  }
 }
