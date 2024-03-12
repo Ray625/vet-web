@@ -1,4 +1,4 @@
-import styles from '../styles/homepage_info..module.scss'
+import styles from '../styles/homepage_info.module.scss'
 
 const IconGroup = ({className, svg, content}) => {
   return (
@@ -40,7 +40,6 @@ const InfoSection = () => {
               svg={'pin'}
               content={'116台北市文山區新光路二段8號'}
             />
-
           </div>
         </div>
         <div className={styles.mapSide}>

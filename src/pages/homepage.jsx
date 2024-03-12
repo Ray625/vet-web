@@ -8,6 +8,7 @@ import ReviewsSection from "../components/homepage_reviews"
 import NewsSection from "../components/homepage_news"
 import InfoSection from "../components/homepage_info"
 import BookSection from "../components/homepage_book"
+import Footer from "../components/footer"
 import './homepage.scss'
 
 const Homepage = () => {
@@ -23,6 +24,7 @@ const Homepage = () => {
       <NewsSection />
       <InfoSection />
       <BookSection />
+      <Footer />
     </div>
   )
 }
