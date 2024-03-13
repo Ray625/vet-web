@@ -4,14 +4,12 @@ const ReasonSection = () => {
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.titleGroup}>
-          <h2 className={styles.title}>
+        <div className={styles.titleContainer}>
+          <div className={styles.titleGroup}>
             <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
-            Why Choose Us
-          </h2>
-          <h3 className={styles.subtitle}>
-            我們值得您的信賴與安心
-          </h3>
+            <h2 className={styles.title}>Why Choose Us</h2>
+          </div>
+          <h3 className={styles.subtitle}>我們值得您的信賴與安心</h3>
         </div>
         <div className={styles.body}>
           <div className={styles.content}>

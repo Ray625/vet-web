@@ -104,7 +104,7 @@ const CardSlider = () => {
         settings: {
           speed: 1000,
           autoplaySpeed: 3000,
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
