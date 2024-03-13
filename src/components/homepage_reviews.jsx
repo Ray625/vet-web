@@ -53,7 +53,7 @@ const Card = ({ props }) => {
  
   if (id % 2 === 1) {
     return (
-      <div className={styles.card} style={{marginTop:'38px', marginBottom: '12px'}}>
+      <div className={styles.cardOdd}>
       {(id % 3 === 1) && <img src="svg/icon_dot_blue.svg" className={styles.iconDot} alt="icon_dot" />}
       {(id % 3 === 2) && <img src="svg/icon_dot_green.svg" className={styles.iconDot} alt="icon_dot" />}
       {(id % 3 === 0) && <img src="svg/icon_dot_orange.svg" className={styles.iconDot} alt="icon_dot" />}
@@ -70,7 +70,7 @@ const Card = ({ props }) => {
   } 
 
   return (
-      <div className={styles.card} style={{marginTop:'12px',marginBottom:'38px'}}>
+      <div className={styles.cardEven}>
       {(id % 3 === 1) && <img src="svg/icon_dot_blue.svg" className={styles.iconDot} alt="icon_dot" />}
       {(id % 3 === 2) && <img src="svg/icon_dot_green.svg" className={styles.iconDot} alt="icon_dot" />}
       {(id % 3 === 0) && <img src="svg/icon_dot_orange.svg" className={styles.iconDot} alt="icon_dot" />}
@@ -98,6 +98,17 @@ const CardSlider = () => {
     autoplaySpeed: 5000,
     cssEase: "ease",
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          speed: 1000,
+          autoplaySpeed: 3000,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

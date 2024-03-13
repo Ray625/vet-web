@@ -107,8 +107,8 @@
 %dots {
   position: relative;
   background-color: transparent;
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 0;
   opacity: 1;
@@ -120,11 +120,15 @@
   top: 50%;
   left: 50%;
   background-color: #FFF;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
+}
+
+:global(.slick-dots li) {
+  margin: 0;
 }
 
 :global(.slick-dots li button) {
@@ -147,4 +151,31 @@
 :global(.slick-dots) {
   position: absolute;
   bottom: 25px;
+}
+
+@media screen and (min-width: 480px) {
+  :global(.slick-dots li button) {
+    width: 16px;
+    height: 16px;
+  }
+
+  :global(.slick-dots li button::before) {
+    width: 8px;
+    height: 8px;
+  }
+
+  :global(.slick-dots li.slick-active button) {
+    width: 16px;
+    height: 16px;
+  }
+
+  :global(.slick-dots li.slick-active button::before) {
+    width: 8px;
+    height: 8px;
+  }
+
+  :global(.slick-dots) {
+    position: absolute;
+    bottom: 25px;
+  }
 }
