@@ -28,22 +28,25 @@ const AboutSection = () => {
           <p className={styles.content}>
             我們的專業團隊以愛心和責任感為每一位毛孩提供最好的護理。無論是緊急治療、預防保健還是手術，我們都以最先進的設備和技術為您的寵物提供最佳照顧。
           </p>
-          <div className={styles.iconList}>
-            <IconGroup 
-              className={styles.iconHeartWrapper}
-              svg={'heart'}
-              content={'全面服務'}
-            />
-            <IconGroup 
-              className={styles.iconTeamWrapper}
-              svg={'team'}
-              content={'專業團隊'}
-            />
-            <IconGroup 
-              className={styles.iconToolWrapper}
-              svg={'tool'}
-              content={'先進設備'}
-            />
+          <div className={styles.mobileIconContainer}>
+            <div className={styles.iconList}>
+              <IconGroup 
+                className={styles.iconHeartWrapper}
+                svg={'heart'}
+                content={'全面服務'}
+                />
+              <IconGroup 
+                className={styles.iconTeamWrapper}
+                svg={'team'}
+                content={'專業團隊'}
+                />
+              <IconGroup 
+                className={styles.iconToolWrapper}
+                svg={'tool'}
+                content={'先進設備'}
+                />
+            </div>
+            <div className={styles.mobileImg}></div>
           </div>
         </div>
       </div>
