@@ -105,10 +105,11 @@
 
 @media screen and (min-width: 480px) {
   .container {
+    height: 72vh;
     padding: 90px 60px;
     background-image: url(../../public/img/reviews_background.png);
     background-size: contain;
-    background-position: bottom;
+    background-position: top 150% center;
     &::after,
     &::before {
       content: '';
@@ -120,13 +121,13 @@
     }
 
     &::after {
-      bottom: 20%;
+      bottom: 10%;
       right: 5%;
       background-image: url(../../public/img/reviews_background_right.png);
     }
 
     &::before {
-      bottom: 20%;
+      bottom: 10%;
       left: 10%;
       background-image: url(../../public/img/reviews_background_left.png);
     }
