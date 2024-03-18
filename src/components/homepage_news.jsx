@@ -80,13 +80,12 @@ const CardSlider = () => {
   const settings = {
     arrows: false,
     dots: true,
-    infinite: true,
+    infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
-    speed: 2000,
-    autoplaySpeed: 5000,
-    cssEase: "ease",
+    speed: 500,
+    easing: "liner",
     dotsClass:"mobile-slick-dots",
   };
 

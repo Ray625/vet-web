@@ -33,7 +33,7 @@ const SliderBanner = () => {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
-    cssEase: "ease",
+    easing: "ease",
     nextArrow: <NextArrowButton />,
     prevArrow: <PrevArrowButton />,
   };

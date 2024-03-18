@@ -96,7 +96,7 @@ const CardSlider = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 5000,
-    cssEase: "ease",
+    easing: "ease",
     responsive: [
       {
         breakpoint: 480,
