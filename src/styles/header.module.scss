@@ -167,7 +167,8 @@
   top: 80px;
   z-index: 10;
   width: 100vw;
-  height: calc(100vh - 80px);
+  height: fit-content; // 若遇到小螢幕，內容會超出100vh，所以這裡設定fit-content
+  min-height: calc(100vh - 80px); // min-height設定讓大螢幕時至少讓畫面佔滿
   padding: 24px;
   background-color: style.$hover_gray;
   transition: opacity 0.3s ease;

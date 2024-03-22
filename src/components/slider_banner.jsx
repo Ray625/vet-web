@@ -31,12 +31,25 @@ const SliderBanner = forwardRef((props, ref) => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
     easing: "ease",
     nextArrow: <NextArrowButton />,
     prevArrow: <PrevArrowButton />,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          autoplay: true,
+          speed: 1000,
+          autoplaySpeed: 3000,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

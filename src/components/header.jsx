@@ -58,9 +58,11 @@ const Header = forwardRef((props, ref) => {
     if (!hamburgerOpen) {
       hamburgerRef.current.className = styles.closeBtn
       menuRef.current.className = styles.mobileMenu
+      document.body.style.overflow = 'hidden';
     }else {
       hamburgerRef.current.className = styles.hamburger
       menuRef.current.className = styles.closedMenu
+      document.body.style.overflow = 'auto';
     }
 
     setHamburgerOpen(!hamburgerOpen)
