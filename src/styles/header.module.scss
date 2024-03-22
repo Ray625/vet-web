@@ -1,5 +1,12 @@
 @use '/src/styles/style.scss';
 
+.container {
+  position: fixed; 
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+}
+
 .wrapper {
   height: 80px;
   width: 100%;
@@ -9,7 +16,6 @@
   align-items: center;
   box-shadow: 0px 4px 20px 0px #00000014;
   position: relative;
-  z-index: 100;
 }
 
 .logo {
@@ -46,10 +52,7 @@
 
 .navbarList {
   height: 100%; // 把下面推出去讓滑鼠hover向下移動的過程不會讓下拉選單消失
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+  display: none; // mobile時隱藏
   > a {
     @extend %link;
     height: 100%;
@@ -63,9 +66,12 @@
   }
 }
 
-.btnGroup > a {
-  @extend %link;
-  margin-left:20px;
+.btnGroup {
+  display: none;
+  > a {
+    @extend %link;
+    margin-left: 20px;
+  }
 }
 
 .dropdownMenu {
@@ -101,5 +107,178 @@
       text-decoration: none;
       color: style.$dark_gray;
     }
+  }
+}
+
+%hamburger {
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: style.$icon_gray;
+  transition: all .2s ease 0.2s;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 24px;
+    height: 2px;
+    background-color: style.$icon_gray;
+    transition: all 0.4s ease;
+  }
+
+  &::after {
+    bottom: 8px;
+  }
+
+  &::before {
+    top: 8px;
+  }
+}
+
+.hamburger {
+  @extend %hamburger;
+}
+
+.closeBtn {
+  @extend %hamburger;
+  background-color: transparent;
+  transition: none;
+  &::after {
+    top:0;
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    top:0;
+    bottom: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  position: fixed;
+  top: 80px;
+  z-index: 10;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  padding: 24px;
+  background-color: style.$hover_gray;
+  transition: opacity 0.3s ease;
+  a {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 40px;
+  }
+  a,
+  button,
+  div {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    width: 170px;
+    height: 180px;
+    background-image: url(../../public/img/news_background.png);
+    background-size: contain;
+    opacity: 0.5;
+  }
+}
+
+.closedMenu {
+  position:absolute;
+  opacity: 0;
+  transform: scale( 1, 0);
+  overflow: hidden;
+  a,
+  button,
+  div {
+    opacity: 0;
+  }
+}
+
+.topSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.activeImg {
+  display: none;
+  width: 16px;
+  height: 15px;
+  margin: 0 12px 0 0;
+}
+
+.bottomSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookBtn, 
+.loginBtn {
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid style.$dark_orange;
+  border-radius: 40px;
+}
+
+.bookBtn {
+  margin: 20px 0 20px 0;
+  color: style.$white;
+  background: linear-gradient(90deg,style.$primary_orange 0%, style.$dark_orange 100%);
+}
+
+.loginBtn {
+  margin: 0 0 32px 0;
+  color: style.$primary_orange;
+  background: style.$white;
+}
+
+
+
+@media screen and (min-width: 480px) {
+  .container { // pc版上方還有預留最新消息公告欄欄位
+    top: 44px; 
+  }
+  
+  .navbarList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .btnGroup {
+    display: block;
+  }
+  
+  .hamburger {
+    display: none;
+  }
+
+  .closeBtn {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+
+  .closedMenu {
+    display: none;
   }
 }

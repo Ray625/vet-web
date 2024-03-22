@@ -3,8 +3,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styles from '../styles/slider_banner.module.scss'
 import { OutlineButton } from './button';
+import { forwardRef } from "react";
 
-const SliderBanner = () => {
+const SliderBanner = forwardRef((props, ref) => {
   const handleMoreBtnClick = () => {
     alert('You click more button!')
   }
@@ -30,7 +31,7 @@ const SliderBanner = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     speed: 1000,
     autoplaySpeed: 3000,
     easing: "ease",
@@ -39,7 +40,7 @@ const SliderBanner = () => {
   };
 
   return (
-    <section className="slider-container">
+    <section className={styles.container} ref={ref}>
       <Slider {...settings}>
         <div className={styles.wrapper}>
           <div className={styles.bannerBody}>
@@ -66,6 +67,6 @@ const SliderBanner = () => {
       </Slider>
     </section>
   )
-}
+})
 
 export default SliderBanner

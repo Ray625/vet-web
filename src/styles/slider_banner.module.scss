@@ -1,8 +1,12 @@
 @use '/src/styles/style.scss';
 
+.container {
+  padding-top: 80px; // 向下推出預留navbar的fixed空位
+}
+
 %bannerBgImg {
   width: 100%;
-  height: calc(100vh - 124px); // 扣掉navbar和最新消息的高度
+  height: calc(100vh - 80px); // 扣掉navbar的高度
   background-size: cover;
   background-position: center;
   position: relative;
@@ -177,5 +181,16 @@
   :global(.slick-dots) {
     position: absolute;
     bottom: 25px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    padding-top: 124px; // 向下推出預留navbar + ticker的fixed空位
+  }
+
+  .wrapper,  
+  .wrapper_2 {
+    height: calc(100vh - 124px); // 扣掉navbar和最新消息的高度
   }
 }

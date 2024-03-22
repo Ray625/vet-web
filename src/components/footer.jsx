@@ -11,6 +11,31 @@ const IconGroup = ({wrapperClassName, className, svg, content}) => {
   )
 }
 
+const InfoGroup = () => {
+  return (
+    <div className={styles.infoGroup}>
+      <IconGroup
+        wrapperClassName={styles.iconPhoneWrapper} 
+        className={styles.iconPhone}
+        svg={'phone'}
+        content={'02 2345 6789'}
+      />
+      <IconGroup 
+        wrapperClassName={styles.iconTimeWrapper} 
+        className={styles.iconTime}
+        svg={'time'}
+        content={'Mon - Sun 10:00 am - 21:00 pm'}
+      />
+      <IconGroup 
+        wrapperClassName={styles.iconPinWrapper} 
+        className={styles.iconPin}
+        svg={'pin'}
+        content={'116台北市文山區新光路二段8號'}
+      />
+    </div>
+  )
+}
+
 const SideMapGroup = ({ title, items }) => {
   return (
     <div className={styles.sideMapGroup}>
@@ -49,29 +74,11 @@ const Footer = () => {
             items={['交通指南', '聯絡表單']}
           />
         </div>
-        <div className={styles.infoGroup}>
-          <IconGroup
-            wrapperClassName={styles.iconPhoneWrapper} 
-            className={styles.iconPhone}
-            svg={'phone'}
-            content={'02 2345 6789'}
-          />
-          <IconGroup 
-            wrapperClassName={styles.iconTimeWrapper} 
-            className={styles.iconTime}
-            svg={'time'}
-            content={'Mon - Sun 10:00 am - 21:00 pm'}
-          />
-          <IconGroup 
-            wrapperClassName={styles.iconPinWrapper} 
-            className={styles.iconPin}
-            svg={'pin'}
-            content={'116台北市文山區新光路二段8號'}
-          />
-        </div>
+        <InfoGroup />
       </div>
     </section>
   )
 }
 
 export default Footer;
+export { InfoGroup };

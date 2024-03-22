@@ -1,9 +1,7 @@
 @use '/src/styles/style.scss';
 
 .container {
-  display: flex;
-  background-color: #003B63;
-  position: relative;
+  display: none;
 }
 
 .wrapper {
@@ -30,5 +28,17 @@
   transform: translate(0, -50%);
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    display: flex;
+    background-color: style.$icon_gray;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
   }
 }
