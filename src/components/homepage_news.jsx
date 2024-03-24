@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import styles from '../styles/homepage_news.module.scss';
 
 const news = [{
-    id:'1',
+    id:1,
     img: '/img/news_photo_1.png',
     tagName: '診所公告',
     newsDate: '2024.01.31',
@@ -19,7 +19,7 @@ const news = [{
     }
   },
   {
-    id:'2',
+    id:2,
     img: '/img/news_photo_2.png',
     tagName: '優惠訊息',
     newsDate: '2024.01.15',
@@ -33,7 +33,7 @@ const news = [{
     }
   },
   {
-    id:'3',
+    id:3,
     img: '/img/news_photo_3.png',
     tagName: '醫療新知',
     newsDate: '2024.01.12',
