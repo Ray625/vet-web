@@ -1,2 +1,6 @@
 @use '/src/styles/style.scss';
 
+.container {
+  width: 100%;
+  overflow: hidden;
+}

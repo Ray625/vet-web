@@ -45,10 +45,12 @@ const MobileMenu = forwardRef((props, ref) => {
   )
 })
 
-const Header = forwardRef((props, ref) => {
+const Header = forwardRef(({bookBtnDisplay}, ref) => {
   const [ hamburgerOpen, setHamburgerOpen ] = useState(false)
   const hamburgerRef = useRef(null)
   const menuRef = useRef(null)
+
+  console.log(bookBtnDisplay)
 
   const handleReserveBtnClick = () => {
     alert('you hit the reserve btn')
@@ -60,7 +62,7 @@ const Header = forwardRef((props, ref) => {
       menuRef.current.className = styles.mobileMenu
       document.body.style.overflow = 'hidden';
     }else {
-      hamburgerRef.current.className = styles.hamburger
+      hamburgerRef.current.className = styles.hamburgerBtn
       menuRef.current.className = styles.closedMenu
       document.body.style.overflow = 'auto';
     }
@@ -100,8 +102,11 @@ const Header = forwardRef((props, ref) => {
           <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
           <a href="/login">登入</a>
         </div>
-        <div className={styles.hamburger} ref={hamburgerRef} onClick={handleHamburgerClick}></div>
+        <div className={styles.hamburgerContainer} onClick={handleHamburgerClick}>
+          <div className={styles.hamburgerBtn} ref={hamburgerRef} ></div>
+        </div>
         <MobileMenu ref={menuRef}/>
+        {bookBtnDisplay && <div className={styles.mobileBookBtn} onClick={handleReserveBtnClick}>立即<br/>預約</div>}
       </div>
     </div>
   )

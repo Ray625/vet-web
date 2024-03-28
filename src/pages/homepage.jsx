@@ -10,24 +10,55 @@ import InfoSection from "../components/homepage_info"
 import BookSection from "../components/homepage_booking"
 import Footer from "../components/footer"
 import styles from '../pages/homepage.module.scss';
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 const Homepage = () => {
   const [ tickerOpen, setTickerOpen] = useState(true)
+  const [ bookIntersect, setBookIntersect ] = useState(false)
   const headerRef = useRef(null)
   const bannerRef = useRef(null)
+  const bookingRef = useRef(null)
+
+  // 監測視窗與booking section重疊，則讓mobile預約按鈕隱藏
+  useEffect(() => {
+    const observeTarget = bookingRef.current
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setBookIntersect(true)
+        }else {
+          setBookIntersect(false)
+        }
+      },
+      { threshold: 0 } // 只要進入視窗即觸發
+    );
+
+    if (observeTarget) {
+      observer.observe(observeTarget);
+    }
+
+    return () => {
+      if (observeTarget) {
+        observer.unobserve(observeTarget);
+      }
+    };
+  }, [bookIntersect]);
 
   const handleTickerCloseBtnClick = () => {
     setTickerOpen(false)
     headerRef.current.style.top = '0'
     bannerRef.current.style.paddingTop = '80px'
-  }
+  }  
 
   return (
     <div className={styles.container}>
       {tickerOpen && <Ticker onClick={handleTickerCloseBtnClick}/>}
-      <Header ref={headerRef}/>
+      <Header 
+        bookBtnDisplay={!bookIntersect}
+        ref={headerRef}
+        />
       <SliderBanner ref={bannerRef}/>
       <AboutSection />
       <OfferSection />
@@ -35,7 +66,7 @@ const Homepage = () => {
       <ReviewsSection />
       <NewsSection />
       <InfoSection />
-      <BookSection />
+      <BookSection ref={bookingRef}/>
       <Footer />
     </div>
   )

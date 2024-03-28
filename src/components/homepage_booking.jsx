@@ -1,13 +1,14 @@
 import styles from '../styles/homepage_booking.module.scss';
 import { PrimaryButton } from './button';
+import { forwardRef } from 'react';
 
-const BookSection = () => {
+const BookSection = forwardRef((props, ref) => {
   const handleBookBtnClick = () => {
     alert('you click book btn!')
   }
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={ref}>
       <div className={styles.wrapper}>
         <object data="/svg/home_footprint_white.svg" className={styles.footprint} aria-label="footprint"> </object>
         <h2 className={styles.title}>Booking Now</h2>
@@ -16,6 +17,6 @@ const BookSection = () => {
       </div>
     </section>
   )
-}
+})
 
 export default BookSection;

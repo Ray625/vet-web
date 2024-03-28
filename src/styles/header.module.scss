@@ -8,14 +8,15 @@
 }
 
 .wrapper {
-  height: 80px;
-  width: 100%;
-  background-color: style.$white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 4px 20px 0px #00000014;
   position: relative;
+  width: 100%;
+  height: 80px;
+  padding: 8px 24px;
+  background-color: style.$white;
+  box-shadow: 0px 4px 20px 0px #00000014;
 }
 
 .logo {
@@ -110,6 +111,16 @@
   }
 }
 
+.hamburgerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
 %hamburger {
   position: relative;
   width: 24px;
@@ -137,7 +148,7 @@
   }
 }
 
-.hamburger {
+.hamburgerBtn {
   @extend %hamburger;
 }
 
@@ -165,6 +176,8 @@
   gap: 8px;
   position: fixed;
   top: 80px;
+  left: 0;
+  right: 0;
   z-index: 10;
   width: 100vw;
   height: fit-content; // 若遇到小螢幕，內容會超出100vh，所以這裡設定fit-content
@@ -249,11 +262,31 @@
   background: style.$white;
 }
 
+.mobileBookBtn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 24px;
+  right: 24px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: style.$white;
+  background: linear-gradient(90deg, style.$primary_orange 0%, style.$dark_orange 100%);
+  box-shadow: 0px 0px 40px 0px #0000001F;
+}
+
 
 
 @media screen and (min-width: 480px) {
   .container { // pc版上方還有預留最新消息公告欄欄位
     top: 44px; 
+  }
+
+  .wrapper {
+    justify-content: space-around;
   }
   
   .navbarList {
@@ -267,7 +300,7 @@
     display: block;
   }
   
-  .hamburger {
+  .hamburgerContainer {
     display: none;
   }
 
@@ -280,6 +313,10 @@
   }
 
   .closedMenu {
+    display: none;
+  }
+
+  .mobileBookBtn {
     display: none;
   }
 }
