@@ -1,0 +1,56 @@
+@use '/src/styles/style.scss';
+
+.nameGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.termGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 16px 0; 
+}
+
+.checkbox {
+  all: unset;
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  margin: 0 12px 0 0;
+  border-radius: 4px;
+  border: 1px solid style.$light-gray;
+  &:hover {
+    cursor: pointer;
+  }
+  &:checked {
+    background-color: style.$primary_orange;
+    &::after {
+      content: "\2714";
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      color: style.$white;
+    }
+  }
+}
+
+.describe {
+  margin: 0;
+  color: style.$font-gray;
+  font-size: style.$point-font-size;
+  span {
+    color: style.$icon_gray;
+    font-size: style.$point-font-size;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -13,7 +13,7 @@ import styles from '../pages/homepage.module.scss';
 import { useEffect, useState, useRef } from "react";
 
 
-const Homepage = () => {
+const HomePage = () => {
   const [ tickerOpen, setTickerOpen] = useState(true)
   const [ bookIntersect, setBookIntersect ] = useState(false)
   const headerRef = useRef(null)
@@ -72,4 +72,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage
+export default HomePage

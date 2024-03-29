@@ -54,7 +54,7 @@ const Footer = () => {
         <div className={styles.logo}></div>
         <div className={styles.content}>
           <p className={styles.describe}>Caring for your pets like family.</p>
-          <p className={styles.copyright}>Copyright © 2024 JP Pet Clinic All rights reserved.</p>
+          <p className={styles.copyright}>Copyright © 2024 JP Pet Clinic All rights reserved.</p>
         </div>
         <div className={styles.sideMap}>
           <SideMapGroup 

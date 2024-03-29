@@ -18,7 +18,7 @@ const OutlineButton = ({ title, onClick }) => {
   )
 }
 
-const LabelMoreButton = ({ onClick, label}) => { 
+const LabelMoreButton = ({ onClick, label }) => { 
   return (
     <label className={styles.moreBtnLabel}>
       {label}
