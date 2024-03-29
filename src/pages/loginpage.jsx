@@ -45,7 +45,7 @@ const LoginPage = () => {
             placeholder={'請輸入8-12位英數混合之密碼'}
           />
         </FormGroup>
-        <div className={styles.fogetPass} onClick={() => navigate('/foget-pass')}>忘記密碼?</div>
+        <div className={styles.forgetPass} onClick={() => navigate('/forget-pass')}>忘記密碼?</div>
       </RightSide>
     </LoginContainer>
   )

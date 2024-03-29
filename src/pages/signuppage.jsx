@@ -31,7 +31,7 @@ const SignupPage = () => {
           title={'註冊'}
           onClick={handleGoogleSignup}
           />
-        <FormGroup btnText={'登入'}>
+        <FormGroup btnText={'註冊'}>
           <div className={styles.nameGroup}>
             <InputGroup 
             title={'姓氏'}
