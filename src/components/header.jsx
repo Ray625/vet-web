@@ -1,56 +1,60 @@
 import styles from '../styles/header.module.scss';
 import { PrimaryButton } from './button';
 import { useRef, useState, forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {  InfoGroup } from './footer';
 
-const DropdownMenu = ({linkTo, menuList}) => {
-  return (
-    <ul className={styles.dropdownMenu}>
-      {menuList.map((item) => <li><a href={'/' + linkTo}>{item}</a></li>)}
-    </ul>  
-  )
-}
-
 const MobileMenu = forwardRef((props, ref) => {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.closedMenu} ref={ref}>
       <div className={styles.topSide}>
-        <a href="/" >
+        <div onClick={() => navigate('/')} className={styles.entry}>
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           首頁
-        </a>
-        <a href="/about">
+        </div>
+        <div onClick={() => navigate('/about')} className={styles.entry}>
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           關於我們
-        </a>
-        <a href="/service">
+        </div>
+        <div onClick={() => navigate('/service')} className={styles.entry}>
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           服務項目
-        </a>
-        <a href="/news">
+        </div>
+        <div onClick={() => navigate('/news')} className={styles.entry}>
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           最新消息
-        </a>
-        <a href="/contact-us">
+        </div>
+        <div onClick={() => navigate('/contact-us')} className={styles.entry}>
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           聯絡我們
-        </a>
+        </div>
       </div>
       <div className={styles.bottomSide}>
         <button className={styles.bookBtn} onClick={() => alert('booking')}>立即預約</button>
-        <button className={styles.loginBtn} onClick={() => alert('login')}>登入</button>
+        <button className={styles.loginBtn} onClick={() => navigate('/login')}>登入</button>
         <InfoGroup />
       </div>
     </div>
   )
 })
 
+const DropdownMenu = ({linkTo, menuList}) => {
+  const navigate = useNavigate()
+
+  return (
+    <ul className={styles.dropdownMenu}>
+      {menuList.map((item) => <div onClick={() => navigate(`/${linkTo}`)}>{item}</div>)}
+    </ul>  
+  )
+}
+
 const Header = forwardRef(({bookBtnDisplay}, ref) => {
   const [ hamburgerOpen, setHamburgerOpen ] = useState(false)
   const hamburgerRef = useRef(null)
   const menuRef = useRef(null)
-
-  console.log(bookBtnDisplay)
+  const navigate = useNavigate()
 
   const handleReserveBtnClick = () => {
     alert('you hit the reserve btn')
@@ -73,34 +77,32 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
   return (
     <div className={styles.container} ref={ref}>
       <div className={styles.wrapper}>
-        <a href="/">
-          <div className={styles.logo}></div>
-        </a>
+        <div className={styles.logo} onClick={() => navigate('/')}></div>
         <div className={styles.navbarList}>
-          <a href="/" >首頁</a>
-          <a href="/about">
+          <div onClick={() => navigate('/')} className={styles.navbarEntry}>首頁</div>
+          <div onClick={() => navigate('/about')} className={styles.navbarEntry}>
             關於我們
             <DropdownMenu 
               linkTo={'about'}
               menuList={['經營理念','專業團隊','診所資訊']} />
-          </a>
-          <a href="/service">
+          </div>
+          <div onClick={() => navigate('/service')} className={styles.navbarEntry}>
             服務項目
             <DropdownMenu 
               linkTo={'service'}
               menuList={['內科','外科','其他專科']} />
-          </a>
-          <a href="/news">最新消息</a>
-          <a href="/contact-us">
+          </div>
+          <div onClick={() => navigate('/news')} className={styles.navbarEntry}>最新消息</div>
+          <div onClick={() => navigate('/contact-us')} className={styles.navbarEntry}>
             聯絡我們
             <DropdownMenu 
               linkTo={'contact-us'}
               menuList={['交通指南','聯絡表單']} />
-          </a>
+          </div>
         </div>
         <div className={styles.btnGroup}>
           <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
-          <a href="/login">登入</a>
+          <div onClick={() => navigate('/login')} className={styles.login}>登入</div>
         </div>
         <div className={styles.hamburgerContainer} onClick={handleHamburgerClick}>
           <div className={styles.hamburgerBtn} ref={hamburgerRef} ></div>

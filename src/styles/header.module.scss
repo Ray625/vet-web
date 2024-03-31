@@ -54,7 +54,7 @@
 .navbarList {
   height: 100%; // 把下面推出去讓滑鼠hover向下移動的過程不會讓下拉選單消失
   display: none; // mobile時隱藏
-  > a {
+  > .navbarEntry {
     @extend %link;
     height: 100%;
     display: flex;
@@ -69,7 +69,7 @@
 
 .btnGroup {
   display: none;
-  > a {
+  > .login {
     @extend %link;
     margin-left: 20px;
   }
@@ -91,7 +91,7 @@
   &:hover {
     display: flex;
   }
-  li {
+  div {
     width: 132px;
     padding: 16px 24px;
     border-radius: 8px;
@@ -99,14 +99,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    list-style: none;
+    color: style.$dark_gray;
     &:hover {
       background-color: style.$hover_gray;
-    }
-    > a {
-      align-self: center;
-      text-decoration: none;
-      color: style.$dark_gray;
     }
   }
 }
@@ -185,7 +180,7 @@
   padding: 24px;
   background-color: style.$hover_gray;
   transition: opacity 0.3s ease;
-  a {
+  .entry {
     width: 100%;
     padding: 16px;
     font-size: 18px;
@@ -217,7 +212,7 @@
   opacity: 0;
   transform: scale( 1, 0);
   overflow: hidden;
-  a,
+  div,
   button,
   div {
     opacity: 0;
@@ -288,6 +283,12 @@
   .wrapper {
     justify-content: space-around;
   }
+
+  .logo {
+    &:hover {
+      cursor: pointer;
+    }
+  }
   
   .navbarList {
     display: flex;
@@ -296,8 +297,17 @@
     gap: 3rem;
   }
 
+  .navbarEntry:hover {
+    cursor: pointer;
+  }
+
   .btnGroup {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    > .login:hover {
+      cursor: pointer;
+    }
   }
   
   .hamburgerContainer {
