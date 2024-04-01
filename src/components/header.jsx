@@ -1,33 +1,44 @@
-import styles from '../styles/header.module.scss';
 import { PrimaryButton } from './button';
 import { useRef, useState, forwardRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {  InfoGroup } from './footer';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { InfoGroup } from './footer';
+import styles from '../styles/header.module.scss';
 
 const MobileMenu = forwardRef((props, ref) => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   return (
     <div className={styles.closedMenu} ref={ref}>
       <div className={styles.topSide}>
-        <div onClick={() => navigate('/')} className={styles.entry}>
+        <div onClick={() => navigate('/') } className={location.pathname === '/' ? styles.active : styles.entry}>
+          {location.pathname === '/' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
+          )}
           首頁
         </div>
-        <div onClick={() => navigate('/about')} className={styles.entry}>
+        <div onClick={() => navigate('/about')} className={location.pathname === '/about' ? styles.active : styles.entry}>
+          {location.pathname === '/about' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
+          )}
           關於我們
         </div>
-        <div onClick={() => navigate('/service')} className={styles.entry}>
+        <div onClick={() => navigate('/service')} className={location.pathname === '/service' ? styles.active : styles.entry}>
+          {location.pathname === '/service' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
+          )}
           服務項目
         </div>
-        <div onClick={() => navigate('/news')} className={styles.entry}>
+        <div onClick={() => navigate('/news')} className={location.pathname === '/news' ? styles.active : styles.entry}>
+          {location.pathname === '/news' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
+          )}
           最新消息
         </div>
-        <div onClick={() => navigate('/contact-us')} className={styles.entry}>
+        <div onClick={() => navigate('/contact-us')} className={location.pathname === '/contact-us' ? styles.active : styles.entry}>
+          {location.pathname === '/contact-us' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
+          )}
           聯絡我們
         </div>
       </div>

@@ -180,13 +180,6 @@
   padding: 24px;
   background-color: style.$hover_gray;
   transition: opacity 0.3s ease;
-  .entry {
-    width: 100%;
-    padding: 16px;
-    font-size: 18px;
-    text-decoration: none;
-    border-radius: 40px;
-  }
   a,
   button,
   div {
@@ -224,8 +217,27 @@
   flex-direction: column;
 }
 
+.entry {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  color: style.$font-gray;
+  text-decoration: none;
+  border-radius: 40px;
+}
+
+.active {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 40px;
+  color: style.$icon-gray; 
+  background-color: style.$white;
+}
+
 .activeImg {
-  display: none;
+  display: span;
   width: 16px;
   height: 15px;
   margin: 0 12px 0 0;

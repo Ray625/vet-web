@@ -50,6 +50,12 @@
 .logo {
   width: 105px;
   height: 90px;
+  background-image: url('../../public/svg/login_logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .describe {
