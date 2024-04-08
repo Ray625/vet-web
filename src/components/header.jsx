@@ -1,8 +1,10 @@
 import { PrimaryButton } from './button';
-import { useRef, useState, forwardRef } from 'react';
+import { useRef, useState, forwardRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { InfoGroup } from './footer';
 import styles from '../styles/header.module.scss';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+
 
 const MobileMenu = forwardRef((props, ref) => {
   const navigate = useNavigate()
@@ -56,16 +58,33 @@ const DropdownMenu = ({linkTo, menuList}) => {
 
   return (
     <ul className={styles.dropdownMenu}>
-      {menuList.map((item) => <div onClick={() => navigate(`/${linkTo}`)}>{item}</div>)}
+      {menuList.map((item, index) => <div onClick={() => navigate(`/${linkTo}`)}key={index}>{item}</div>)}
     </ul>  
   )
 }
 
 const Header = forwardRef(({bookBtnDisplay}, ref) => {
   const [ hamburgerOpen, setHamburgerOpen ] = useState(false)
+  const [ user, setUser] = useState(null)
   const hamburgerRef = useRef(null)
   const menuRef = useRef(null)
   const navigate = useNavigate()
+  const auth = getAuth();
+
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    });
+  },[auth])
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      alert('已登出')
+    }).catch((error) => {
+      console.error(error)
+    });
+  }
 
   const handleReserveBtnClick = () => {
     alert('you hit the reserve btn')
@@ -113,7 +132,14 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
         </div>
         <div className={styles.btnGroup}>
           <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
-          <div onClick={() => navigate('/login')} className={styles.login}>登入</div>
+          {user ? (
+          <>
+            <div className={styles.userName}>{user.displayName}</div>
+            <div onClick={handleSignOut} className={styles.login}>登出</div>
+          </>
+          ) : (
+            <div onClick={() => navigate('/login')} className={styles.login}>登入</div>
+          )}          
         </div>
         <div className={styles.hamburgerContainer} onClick={handleHamburgerClick}>
           <div className={styles.hamburgerBtn} ref={hamburgerRef} ></div>

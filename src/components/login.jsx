@@ -60,20 +60,20 @@ const GoogleBtn = ({ title, onClick }) => {
   )
 }
 
-const FormGroup = ({ children, btnText}) => {
+const FormGroup = ({ children, btnText, onSubmit}) => {
   return (
     <form action="post" className={styles.form}>
       {children}   
-      <button type="submit" className={styles.submitBtn}>{btnText}</button>
+      <button type="submit" className={styles.submitBtn} onClick={onSubmit}>{btnText}</button>
     </form>
   )
 }
 
-const InputGroup = ({ title, name, type, placeholder }) => {
+const InputGroup = ({ title, name, type, placeholder, value, onChange }) => {
   return (
     <div className={styles.inputGroup}>
       <label htmlFor={name} className={styles.inputLabel}>{title}</label>
-      <input type={type} name={name} id={name} placeholder={placeholder} className={styles.input}/>
+      <input type={type} name={name} id={name} placeholder={placeholder} className={styles.input} value={value} onChange={onChange} />
     </div>
   )
 }

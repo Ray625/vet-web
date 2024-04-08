@@ -26,8 +26,8 @@ const NewsSlider = () => {
   return (
     <div className={styles.cardSlider}>
       <Slider {...settings}>
-        {news.map((newsItem) => {
-          return <p className={styles.news}>{newsItem}</p>
+        {news.map((newsItem, index) => {
+          return <p className={styles.news} key={index}>{newsItem}</p>
         })}
       </Slider>      
     </div>
