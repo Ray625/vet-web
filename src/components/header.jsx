@@ -3,8 +3,7 @@ import { useRef, useState, forwardRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { InfoGroup } from './footer';
 import styles from '../styles/header.module.scss';
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-
+import { useAuth } from '../contexts/AuthContext';
 
 const MobileMenu = forwardRef((props, ref) => {
   const navigate = useNavigate()
@@ -65,25 +64,21 @@ const DropdownMenu = ({linkTo, menuList}) => {
 
 const Header = forwardRef(({bookBtnDisplay}, ref) => {
   const [ hamburgerOpen, setHamburgerOpen ] = useState(false)
-  const [ user, setUser] = useState(null)
   const hamburgerRef = useRef(null)
   const menuRef = useRef(null)
   const navigate = useNavigate()
-  const auth = getAuth();
+  const { currentUser, logout } = useAuth()
 
-  
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-    });
-  },[auth])
+    if(hamburgerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  },[hamburgerOpen])
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-      alert('已登出')
-    }).catch((error) => {
-      console.error(error)
-    });
+    logout()
   }
 
   const handleReserveBtnClick = () => {
@@ -94,11 +89,9 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
     if (!hamburgerOpen) {
       hamburgerRef.current.className = styles.closeBtn
       menuRef.current.className = styles.mobileMenu
-      document.body.style.overflow = 'hidden';
-    }else {
+    } else {
       hamburgerRef.current.className = styles.hamburgerBtn
       menuRef.current.className = styles.closedMenu
-      document.body.style.overflow = 'auto';
     }
 
     setHamburgerOpen(!hamburgerOpen)
@@ -132,13 +125,15 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
         </div>
         <div className={styles.btnGroup}>
           <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
-          {user ? (
+          {currentUser ? (
           <>
-            <div className={styles.userName}>{user.displayName}</div>
+            <div className={styles.userName}>{currentUser?.displayName}</div>
             <div onClick={handleSignOut} className={styles.login}>登出</div>
           </>
           ) : (
-            <div onClick={() => navigate('/login')} className={styles.login}>登入</div>
+            <div onClick={() => {
+              navigate('/login')
+            }} className={styles.login}>登入</div>
           )}          
         </div>
         <div className={styles.hamburgerContainer} onClick={handleHamburgerClick}>

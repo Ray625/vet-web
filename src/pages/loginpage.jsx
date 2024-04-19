@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { LoginContainer, LeftSide, RightSide, TitleGroup, GoogleBtn, FormGroup,InputGroup } from '../components/login';
 import styles from './loginpage.module.scss';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-// eslint-disable-next-line
-import firebase from "../utils/firebase";
+import { useAuth } from "../contexts/AuthContext";
 
 
 const LoginPage = () => {
@@ -12,15 +10,16 @@ const LoginPage = () => {
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
 
+  const {emailLogin, googleLogin} = useAuth()
+
   const handleSignUpClick = () => {
     navigate('/signup')
   }
 
   const handleGoogleLogin = () => {
-    alert('use google login')
+    googleLogin()
   }
 
-  const auth = getAuth();
   const onSubmit = (e) => {
     e.preventDefault()
     if(!email) {
@@ -29,18 +28,7 @@ const LoginPage = () => {
     if(!password) {
       return alert('請輸入密碼') 
     }
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        // Signed in 
-        navigate('/');
-      })
-      .catch((error) => {
-        alert('帳號或密碼錯誤!')
-        const errorCode = error.code;
-        console.log('errorCode:', errorCode)
-        const errorMessage = error.message;
-        console.log('errorNessage: ', errorMessage)
-      });
+    emailLogin(email, password)
   }
 
   return (

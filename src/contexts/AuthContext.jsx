@@ -1,0 +1,95 @@
+import { createContext, useState, useContext, useEffect } from "react";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signOut, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+// eslint-disable-next-line
+import firebase from "../utils/firebase";
+
+const defaultAuthContext = {
+  currentUser: null,
+  emailRegister: null,
+  googleLogin: null,
+  emailLogin: null,
+  logout: null,
+  backTo: null,
+}
+
+const AuthContext = createContext(defaultAuthContext);
+
+const useAuth = () => useContext(AuthContext);
+
+const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const navigate = useNavigate()  
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+  },[auth])
+  
+  return (
+    <AuthContext.Provider value={{
+      currentUser,
+      emailRegister: async (email, password, firstName, lastName) => {
+        try {
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+          const newUser = userCredential.user;
+          await updateProfile(newUser, {displayName: `${lastName} ${firstName}`,})
+          const user = auth.currentUser
+          setCurrentUser(user)
+          navigate('/')
+        } catch (error) {
+          const errorCode = error.code;
+          if(errorCode === 'auth/email-already-in-use') {
+            alert('此Email已註冊')
+          }
+        }
+      },
+      googleLogin: async () => {
+        try {
+          const result = await signInWithPopup(auth, provider)
+          const user = result.user;
+          setCurrentUser(user)
+          navigate('/') 
+        } catch (error) {
+          // eslint-disable-next-line
+          const errorCode = error.code;
+        }
+      },
+      emailLogin: async (email, password) => {
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, email, password)
+          const user = userCredential.user;
+          setCurrentUser(user)
+          console.log((await user.getIdTokenResult()).token)
+          navigate('/')
+        } catch (error) {
+          const errorCode = error.code;
+          if (errorCode === 'auth/invalid-credential') {
+            alert('帳號或密碼錯誤，請再試一次，或按一下「忘記密碼」以重設密碼。')
+          }
+        }
+      },
+      logout: async () => {
+        try {
+          await signOut(auth)
+          setCurrentUser(null)
+          alert('已登出')
+        } catch (error) {
+          console.error(error)
+        }
+      },
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export { useAuth, AuthProvider};

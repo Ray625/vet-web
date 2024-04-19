@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { LoginContainer, LeftSide, RightSide, TitleGroup, GoogleBtn, FormGroup,InputGroup } from '../components/login';
 import styles from './signuppage.module.scss'
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+
 
 const SignupPage = () => {
   const [firstName, setFirstName] = useState(null);
@@ -12,16 +13,17 @@ const SignupPage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const navigate = useNavigate()
 
+  const {emailRegister, googleLogin} = useAuth()
+
   const handleLoginClick = () => {
     navigate('/login')
   }
 
   const handleGoogleSignup = () => {
-    alert('use google signup')
+    googleLogin()
   }
   
 
-  const auth = getAuth();
   const onSubmit = (e) => {
     e.preventDefault()
     if(!lastName) {
@@ -42,29 +44,7 @@ const SignupPage = () => {
     if(checkedTerms === false) {
       return alert('請同意 服務條款 與 隱私權政策')
     }
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        return user
-      })
-      .then((user) => {
-        // 將user輸入姓名存入
-        updateProfile(user, {
-          displayName: `${lastName} ${firstName}`,
-        }).catch((error) => {
-        });
-      })
-      .then(() => {
-        window.location.href='/';
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        if(errorCode === 'auth/email-already-in-use') {
-          alert('此Email已註冊')
-        }
-      });
-
+    emailRegister(email, password, firstName, lastName)
   }
 
   return (
