@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## 簡介
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+以React建置的動物醫院官網，設有會員系統可以註冊及登入。
 
-## Available Scripts
+## 功能
 
-In the project directory, you can run:
+串接firebase建立登入系統，可使用email註冊及使用google帳戶登入。\
+以react-router-dom做前端路由功能。\
+以react-slick做首頁的banner輪播功能。\
+預約功能將陸續更新...
 
-### `npm start`
+## 環境設置
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+firebase@ 10.10.0\
+react-router-dom@ 6.22.3\
+react-slick@ 0.30.2\
+slick-carousel@ 1.8.1\
+sass@ 1.71.1
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 開始使用
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+clone專案至本地。\
+於終端機移至專案資料夾輸入:
+```
+npm install
+```
+於根目錄建立.env\
+註冊firebase並將firebase環境變數寫入
+```
+REACT_APP_FIREBASE_API_KEY= xxxxxxxxxx
+REACT_APP_FIREBASE_AUTH_DOMAIN= my-vet-web.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID= my-vet-web
+REACT_APP_FIREBASE_STOREAGE_BUCKET= my-vet-web.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID= xxxxxxxxxx
+REACT_APP_FIREBASE_APP_ID= xxxxxxxxxx
+REACT_APP_FIREBASE_MEASUREMENT_ID= xxxxxxxxxx
+```
+啟用伺服器
+```
+npm run start
+```
+打開瀏覽器進入到以下網址
+```
+http://localhost:3000
+```
+若欲停止使用請輸入
+```
+Ctrl + C
+```
