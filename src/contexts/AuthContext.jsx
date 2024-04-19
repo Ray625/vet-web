@@ -11,6 +11,7 @@ const defaultAuthContext = {
   emailLogin: null,
   logout: null,
   backTo: null,
+  isLoading: false,
 }
 
 const AuthContext = createContext(defaultAuthContext);
@@ -19,6 +20,7 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate()  
   const auth = getAuth();
@@ -37,19 +39,23 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       currentUser,
+      isLoading,
       emailRegister: async (email, password, firstName, lastName) => {
         try {
+          setIsLoading(true)
           const userCredential = await createUserWithEmailAndPassword(auth, email, password)
           const newUser = userCredential.user;
           await updateProfile(newUser, {displayName: `${lastName} ${firstName}`,})
           const user = auth.currentUser
           setCurrentUser(user)
+          setIsLoading(false)
           navigate('/')
         } catch (error) {
           const errorCode = error.code;
           if(errorCode === 'auth/email-already-in-use') {
             alert('此Email已註冊')
           }
+          setIsLoading(false)
         }
       },
       googleLogin: async () => {
@@ -65,16 +71,18 @@ const AuthProvider = ({ children }) => {
       },
       emailLogin: async (email, password) => {
         try {
+          setIsLoading(true)
           const userCredential = await signInWithEmailAndPassword(auth, email, password)
           const user = userCredential.user;
           setCurrentUser(user)
-          console.log((await user.getIdTokenResult()).token)
+          setIsLoading(false)
           navigate('/')
         } catch (error) {
           const errorCode = error.code;
           if (errorCode === 'auth/invalid-credential') {
             alert('帳號或密碼錯誤，請再試一次，或按一下「忘記密碼」以重設密碼。')
           }
+          setIsLoading(false)
         }
       },
       logout: async () => {

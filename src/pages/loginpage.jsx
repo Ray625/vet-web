@@ -3,6 +3,7 @@ import { LoginContainer, LeftSide, RightSide, TitleGroup, GoogleBtn, FormGroup,I
 import styles from './loginpage.module.scss';
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import Loading from "../components/loading";
 
 
 const LoginPage = () => {
@@ -10,7 +11,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
 
-  const {emailLogin, googleLogin} = useAuth()
+  const {emailLogin, googleLogin, isLoading} = useAuth()
 
   const handleSignUpClick = () => {
     navigate('/signup')
@@ -33,6 +34,7 @@ const LoginPage = () => {
 
   return (
     <LoginContainer>
+      {isLoading && <Loading/>}
       <LeftSide 
         describe={'Caring for your pets like'}
         focus={'family'}

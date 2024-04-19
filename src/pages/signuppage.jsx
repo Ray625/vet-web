@@ -3,6 +3,7 @@ import { LoginContainer, LeftSide, RightSide, TitleGroup, GoogleBtn, FormGroup,I
 import styles from './signuppage.module.scss'
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import Loading from "../components/loading";
 
 
 const SignupPage = () => {
@@ -13,7 +14,7 @@ const SignupPage = () => {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const navigate = useNavigate()
 
-  const {emailRegister, googleLogin} = useAuth()
+  const {emailRegister, googleLogin, isLoading} = useAuth()
 
   const handleLoginClick = () => {
     navigate('/login')
@@ -49,6 +50,7 @@ const SignupPage = () => {
 
   return (
     <LoginContainer>
+      {isLoading && <Loading/>}
       <LeftSide 
         describe={`Your pet's health is our `}
         focus={'priority'}
