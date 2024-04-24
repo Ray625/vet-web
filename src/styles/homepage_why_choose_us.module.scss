@@ -22,6 +22,10 @@
   }
 }
 
+.background {
+  display: none;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -93,9 +97,34 @@
   .container {
     height: 50vh;
     padding: 96px 24px;
+    background-image: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    height: 70vh;
+    top: -40vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-image: url('../../public/img/reason_background.png');
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center bottom 30%;
+    &::after {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
   }
 
   .wrapper {

@@ -1,8 +1,34 @@
 import styles from '../styles/homepage_why_choose_us.module.scss';
+import { useEffect, useState, useRef } from 'react';
 
 const ReasonSection = () => {
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const [isVisible, setIsVisible] = useState(false);
+  const backgroundRef = useRef(null)
+
+  useEffect(() => {
+    // 確定元件進入可視範圍內，再開始套用滾動視差的效果
+    const checkVisibility = () => {
+      if (backgroundRef.current) {
+        const rect = backgroundRef.current.getBoundingClientRect();
+        setIsVisible(rect.top < window.innerHeight && rect.bottom >= 0);
+        if (rect.top < window.innerHeight) {
+          setScrollPosition(window.innerHeight - rect.top);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+    };
+  }, []);
+
   return (
     <section className={styles.container}>
+      <div ref={backgroundRef} className={styles.background} style={{ transform: isVisible ? `translateY(${scrollPosition * 0.45}px)` : 'none' }}>
+      </div>
       <div className={styles.wrapper}>
         <div className={styles.titleContainer}>
           <div className={styles.titleGroup}>
