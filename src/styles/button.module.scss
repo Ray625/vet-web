@@ -41,6 +41,23 @@
   transition: all 0.2s ease-out;
 }
 
+.mobileBookBtn {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 24px;
+  right: 24px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: style.$white;
+  background: linear-gradient(90deg, style.$primary_orange 0%, style.$dark_orange 100%);
+  box-shadow: 0px 0px 40px 0px #0000001F;
+}
+
 @media screen and (min-width: 480px) {
   .primaryBtn:hover {
     cursor: pointer;
@@ -70,6 +87,10 @@
     cursor: pointer;
     background-color: style.$white;
     color: style.$primary_blue
+  }
+
+  .mobileBookBtn {
+    display: none;
   }
 }
 

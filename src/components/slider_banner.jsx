@@ -3,9 +3,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styles from '../styles/slider_banner.module.scss'
 import { OutlineButton } from './button';
-import { forwardRef } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 
-const SliderBanner = forwardRef((props, ref) => {
+const SliderBanner = () => {
+  const { tickerOpen } = useTheme()
+
   const handleMoreBtnClick = () => {
     alert('You click more button!')
   }
@@ -53,7 +55,7 @@ const SliderBanner = forwardRef((props, ref) => {
   };
 
   return (
-    <section className={styles.container} ref={ref}>
+    <section className={styles.container} style={{paddingTop: tickerOpen ? '124px' : '80px'}}>
       <Slider {...settings}>
         <div className={styles.wrapper}>
           <div className={styles.bannerBody}>
@@ -80,6 +82,6 @@ const SliderBanner = forwardRef((props, ref) => {
       </Slider>
     </section>
   )
-})
+}
 
 export default SliderBanner

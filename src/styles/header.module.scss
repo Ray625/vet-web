@@ -2,7 +2,6 @@
 
 .container {
   position: fixed; 
-  top: 0;
   width: 100vw;
   z-index: 100;
 }
@@ -269,29 +268,9 @@
   background: style.$white;
 }
 
-.mobileBookBtn {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 24px;
-  right: 24px;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  font-size: 14px;
-  color: style.$white;
-  background: linear-gradient(90deg, style.$primary_orange 0%, style.$dark_orange 100%);
-  box-shadow: 0px 0px 40px 0px #0000001F;
-}
-
 
 
 @media screen and (min-width: 480px) {
-  .container { // pc版上方還有預留最新消息公告欄欄位
-    top: 44px; 
-  }
-
   .wrapper {
     justify-content: space-around;
   }
@@ -339,10 +318,6 @@
   }
 
   .closedMenu {
-    display: none;
-  }
-
-  .mobileBookBtn {
     display: none;
   }
 }

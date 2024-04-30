@@ -100,4 +100,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { useAuth, AuthProvider};
+export { useAuth, AuthProvider };

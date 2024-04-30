@@ -28,5 +28,17 @@ const LabelMoreButton = ({ onClick, label }) => {
     </label>
   )
 }
+
+const BookingButton = () => {
+  const handleBookingBtnClick = () => {
+    alert('you hit the reserve btn')
+  }
+
+  return (
+    <div className={styles.mobileBookBtn} onClick={handleBookingBtnClick}>
+      立即<br/>預約
+    </div>
+  )
+}
   
-export { PrimaryButton, OutlineButton, LabelMoreButton };
+export { PrimaryButton, OutlineButton, LabelMoreButton, BookingButton };

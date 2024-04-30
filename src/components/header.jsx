@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { InfoGroup } from './footer';
 import styles from '../styles/header.module.scss';
 import { useAuth } from '../contexts/AuthContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const MobileMenu = forwardRef((props, ref) => {
   const navigate = useNavigate()
@@ -62,12 +63,13 @@ const DropdownMenu = ({linkTo, menuList}) => {
   )
 }
 
-const Header = forwardRef(({bookBtnDisplay}, ref) => {
+const Header = () => {
   const [ hamburgerOpen, setHamburgerOpen ] = useState(false)
   const hamburgerRef = useRef(null)
   const menuRef = useRef(null)
   const navigate = useNavigate()
   const { currentUser, logout } = useAuth()
+  const { tickerOpen } = useTheme()
 
   useEffect(() => {
     if(hamburgerOpen) {
@@ -98,7 +100,7 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
   }
 
   return (
-    <div className={styles.container} ref={ref}>
+    <div className={styles.container} style={{top: tickerOpen ? '44px' : '0'}}>
       <div className={styles.wrapper}>
         <div className={styles.logo} onClick={() => navigate('/')}></div>
         <div className={styles.navbarList}>
@@ -140,10 +142,9 @@ const Header = forwardRef(({bookBtnDisplay}, ref) => {
           <div className={styles.hamburgerBtn} ref={hamburgerRef} ></div>
         </div>
         <MobileMenu ref={menuRef}/>
-        {bookBtnDisplay && <div className={styles.mobileBookBtn} onClick={handleReserveBtnClick}>立即<br/>預約</div>}
       </div>
     </div>
   )
-})
+}
 
 export default Header;
