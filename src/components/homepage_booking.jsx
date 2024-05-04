@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/homepage_booking.module.scss';
 import { PrimaryButton } from './button';
 import { forwardRef } from 'react';
 
 const BookSection = forwardRef((props, ref) => {
+  const navigate = useNavigate()
+
   const handleBookBtnClick = () => {
-    alert('you click book btn!')
+    navigate('/booking')
   }
 
   return (

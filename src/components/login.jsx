@@ -1,5 +1,6 @@
 import styles from '../styles/login.module.scss';
 import { useNavigate } from 'react-router-dom';
+import useRWD from '../hooks/useRWD';
 
 const LoginContainer = ({ children }) => {
   return (
@@ -15,13 +16,14 @@ const LoginContainer = ({ children }) => {
 
 const LeftSide = ({ describe, focus, img }) => {
   const navigate = useNavigate()
+  const device = useRWD()
 
   return (
     <div className={styles.leftSide} style={{backgroundImage:img}}>
-      <div className={styles.logoContainer}>
+      {device === 'PC' && <div className={styles.logoContainer}>
         <div className={styles.logo} onClick={() => navigate('/')}>
         </div> 
-      </div>
+      </div>}
       <p className={styles.describe}>{describe} {focus ? <span>{focus}</span> : ''}</p>
     </div>
   )

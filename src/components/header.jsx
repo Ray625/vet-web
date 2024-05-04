@@ -83,8 +83,8 @@ const Header = () => {
     logout()
   }
 
-  const handleReserveBtnClick = () => {
-    alert('you hit the reserve btn')
+  const handleBookingeBtnClick = () => {
+    navigate('/booking')
   }
 
   const handleHamburgerClick = () => {
@@ -126,7 +126,7 @@ const Header = () => {
           </div>
         </div>
         <div className={styles.btnGroup}>
-          <PrimaryButton title={'立即預約'} onClick={handleReserveBtnClick}/>
+          <PrimaryButton title={'立即預約'} onClick={handleBookingeBtnClick}/>
           {currentUser ? (
           <>
             <div className={styles.userName}>{currentUser?.displayName}</div>

@@ -5,6 +5,7 @@ import HomePage from './pages/homepage';
 import LoginPage from './pages/loginpage';
 import SignupPage from './pages/signuppage';
 import ForgetPassPage from './pages/forgetpasspage';
+import BookingPage from './pages/bookingpage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -22,6 +23,7 @@ function App() {
               <Route path='/forget-pass' element={<ForgetPassPage/>} />
               <Route path='/' element={<Layout/>}>
                 <Route index element={<HomePage/>} />
+                <Route path='/booking' element={<BookingPage/>} />
               </Route>
             </Routes>
           </ThemeProvider>

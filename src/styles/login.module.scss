@@ -10,7 +10,7 @@
 
 .wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
   width: 100%;
@@ -22,10 +22,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 580px;
-  height: 100%;
+  width: 100%;
+  height: 128px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: bottom 30% center;
   &::before {
     content: '';
     position: absolute;
@@ -61,9 +62,8 @@
 .describe {
   position: relative;
   z-index: 3;
-  flex-grow: 1;
   color: style.$white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   span {
     color: style.$primary_orange
@@ -230,5 +230,26 @@
   text-align: center;
   color: style.$white;
   background-color: style.$footer-blue;
+}
+
+@media screen and (min-width: 480px) {
+  .wrapper {
+    flex-direction: row;
+  }
+
+  .leftSide {
+    width: 580px;
+    height: 100%;
+    background-position: center center;
+  }
+
+  .describe {
+    position: relative;
+    z-index: 3;
+    flex-grow: 1;
+    color: style.$white;
+    font-size: 24px;
+    font-weight: 400;
+  }
 }
 

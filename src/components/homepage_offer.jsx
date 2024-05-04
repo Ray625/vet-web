@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import styles from '../styles/homepage_offer.module.scss'
+import { useNavigate } from 'react-router-dom';
 
 const offers = [
   {
@@ -62,8 +63,10 @@ const CardSlider = () => {
 }
 
 const OfferSection = () => {
-  const handleReserveBtnClick = () => {
-    alert('you hit the reserve btn')
+  const navigate = useNavigate()
+
+  const handleBookingeBtnClick = () => {
+    navigate('/booking')
   }
 
   return (
@@ -85,7 +88,7 @@ const OfferSection = () => {
           <CardSlider />
         <PrimaryButton 
           title={'立即預約'}
-          onClick={handleReserveBtnClick} />
+          onClick={handleBookingeBtnClick} />
         </div>     
       </div>
     </section>

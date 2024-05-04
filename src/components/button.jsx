@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/button.module.scss';
 
 const PrimaryButton = ({ title, onClick }) => {
@@ -30,8 +31,10 @@ const LabelMoreButton = ({ onClick, label }) => {
 }
 
 const BookingButton = () => {
+  const navigate = useNavigate()
+
   const handleBookingBtnClick = () => {
-    alert('you hit the reserve btn')
+    navigate('/login')
   }
 
   return (
