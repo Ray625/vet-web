@@ -2,8 +2,7 @@
 
 .nameGroup {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-direction: column;
 }
 
 .termGroup {
@@ -52,5 +51,12 @@
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .nameGroup {
+    flex-direction: row;
+    gap: 16px;
   }
 }

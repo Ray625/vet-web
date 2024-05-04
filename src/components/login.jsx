@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import useRWD from '../hooks/useRWD';
 
 const LoginContainer = ({ children }) => {
+  const device = useRWD()
+  
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
       { children }
       </div>
-      <div className={styles.copyright}>Copyright © 2024 JP Pet Clinic All rights reserved.</div>
+      {device === 'PC' && <div className={styles.copyright}>Copyright © 2024 JP Pet Clinic All rights reserved.</div>}
     </div>
   )
 }

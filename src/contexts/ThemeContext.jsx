@@ -1,4 +1,6 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
+import useRWD from '../hooks/useRWD';
+
 
 const defaultThemeContext = {
   tickerOpen: null,
@@ -11,6 +13,15 @@ const useTheme = () => useContext(ThemeContext);
 
 const ThemeProvider = ({ children }) => {
   const [tickerOpen, setTickerOpen] = useState(true);
+  const device = useRWD()
+
+  useEffect(() => { 
+    if (device === 'mobile') {
+      setTickerOpen(false)
+    } else if (device === 'PC') {
+      setTickerOpen(true)
+    }
+  },[device, setTickerOpen])
 
   return (
     <ThemeContext.Provider value={{ 
