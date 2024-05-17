@@ -58,6 +58,7 @@ const LoginPage = () => {
             type={'email'}
             placeholder={'請輸入您的電子信箱'}
             value={email}
+            autocomplete={'email'}
             onChange={(e) => setEmail(e.target.value)}
           />
           <InputGroup 
@@ -66,6 +67,7 @@ const LoginPage = () => {
             type={'password'}
             placeholder={'請輸入8-12位英數混合之密碼'}
             value={password}
+            autocomplete={'current-password'}
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>

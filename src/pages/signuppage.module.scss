@@ -27,16 +27,17 @@
   &:checked {
     background-color: style.$primary_orange;
     &::after {
-      content: "\2714";
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 24px;
-      height: 24px;
-      font-size: 16px;
-      color: style.$white;
-    }
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        background-image: url(../../public/svg/booking_vector.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: translate(-50%, -50%);
+      }
   }
 }
 

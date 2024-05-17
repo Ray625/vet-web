@@ -73,11 +73,11 @@ const FormGroup = ({ children, btnText, onSubmit}) => {
   )
 }
 
-const InputGroup = ({ title, name, type, placeholder, value, onChange }) => {
+const InputGroup = ({ title, name, type, placeholder, autocomplete, value, onChange }) => {
   return (
     <div className={styles.inputGroup}>
       <label htmlFor={name} className={styles.inputLabel}>{title}</label>
-      <input type={type} name={name} id={name} placeholder={placeholder} className={styles.input} value={value} onChange={onChange} />
+      <input type={type} name={name} id={name} placeholder={placeholder} className={styles.input} autocomplete={autocomplete} value={value} onChange={onChange} />
     </div>
   )
 }

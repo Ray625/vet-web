@@ -75,6 +75,7 @@ const SignupPage = () => {
               type={'lastName'}
               placeholder={'請輸入您的姓氏'}
               value={lastName}
+              autocomplete={'family-name'}
               onChange={(e) => setLastName(e.target.value)}
             />
             <InputGroup 
@@ -83,6 +84,7 @@ const SignupPage = () => {
               type={'firstName'}
               placeholder={'請輸入您的名字'}
               value={firstName}
+              autocomplete={'given-name'}
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -92,6 +94,7 @@ const SignupPage = () => {
             type={'email'}
             placeholder={'請輸入您的電子信箱'}
             value={email}
+            autocomplete={'email'}
             onChange={(e) => setEmail(e.target.value)}
           />
           <InputGroup 
@@ -100,6 +103,7 @@ const SignupPage = () => {
             type={'password'}
             placeholder={'請輸入8-12位英數混合之密碼'}
             value={password}
+            autocomplete={'new-password'}
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className={styles.termGroup}>

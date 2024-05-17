@@ -26,15 +26,21 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
+  // 讓畫面在第一次渲染時檢查是否已登入過會員，有則將會員資料存入state，並透過state改變使畫面渲染出使用者資訊。
   useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
-      } else {
-        setCurrentUser(null);
-      }
-    });
-  },[auth])
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setCurrentUser(user);
+        } else {
+            setCurrentUser(null);
+        }
+      });
+    
+      return () => {
+          unsubscribe(); // 取消身份驗證狀態改變監聽器
+    };
+// eslint-disable-next-line
+  },[])
   
   return (
     <AuthContext.Provider value={{
