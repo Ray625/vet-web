@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signOut, signInWithPopup, onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 // eslint-disable-next-line
 import firebase from "../utils/firebase";
 
@@ -21,6 +21,7 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { pathname } = useLocation();
 
   const navigate = useNavigate()  
   const auth = getAuth();
@@ -40,7 +41,12 @@ const AuthProvider = ({ children }) => {
           unsubscribe(); // 取消身份驗證狀態改變監聽器
     };
 // eslint-disable-next-line
-  },[])
+  }, [])
+  
+  // 頁面切換時回到頂部
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   
   return (
     <AuthContext.Provider value={{

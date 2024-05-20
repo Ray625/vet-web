@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/booking.module.scss';
 
 const BookingContainer = ({ children }) => {
@@ -19,26 +20,44 @@ const BookingContainer = ({ children }) => {
   )
 };
 
-const StepGroup = () => {
+const StepGroup = ({step}) => {
   return (
-    <div className={styles.stepGroup}>
-      <div className={`${styles.step1} ${styles.active}`}>
-        <div className={styles.stepNum}>1</div>
-        <div className={styles.stepName}>選擇門診</div>
-      </div>
-      <div className={`${styles.step2}`}>
-        <div className={styles.stepNum}>2</div>
-        <div className={styles.stepName}>輸入預約資料</div>
-      </div>
-      <div className={`${styles.step3}`}>
-        <div className={styles.stepNum}>3</div>
-        <div className={styles.stepName}>確認預約資料</div>
-      </div>
-    </div>
+    <>
+      {(step === 1 || step === 2 || step === 3) && 
+        <div className={styles.stepGroup}>
+          <div className={step === 1 ? `${styles.step1} ${styles.active}`: `${styles.step1} ${styles.done}`}>
+            <div className={styles.stepNum}>1</div>
+            <div className={styles.stepName}>選擇門診</div>
+          </div>
+            <div className={
+              step === 1
+                ? styles.step2
+                : step === 2
+                ? `${styles.step2} ${styles.active}`
+                : step === 3
+                ? `${styles.step2} ${styles.done}`
+                : styles.step2
+            }>
+            <div className={styles.stepNum}>2</div>
+            <div className={styles.stepName}>輸入預約資料</div>
+          </div>
+          <div className={step === 3 ? `${styles.step3} ${styles.active}`: styles.step3}>
+            <div className={styles.stepNum}>3</div>
+            <div className={styles.stepName}>確認預約資料</div>
+          </div>
+        </div>
+      }
+      {step === 4 && 
+        <div className={styles.stepGroup}>
+          <div className={styles.step4}>
+            <div className={styles.stepDone}></div>
+            <div className={styles.stepName}>預約成功</div>
+          </div>
+        </div>
+      }  
+    </>
   )
 }
-
-
 
 const WeekSelection = ({ weeks, onChange }) => {
 
@@ -80,7 +99,40 @@ const DaySelection = ({ weeks, selectedWeekIndex }) => {
   )
 }
 
-const FormStep1 = () => {
+const BtnGroup = ({name, className, datas}) => {
+  return (
+    <div className={styles.btnGroup}>
+      {datas.map((data) => {
+        return (
+          <>
+            <input type="radio" name={name} id={data.value} value={data.value} />
+            <label htmlFor={data.value} className={className}>{data.title}</label>
+          </>
+        )
+      })}
+    </div>
+  )
+}
+
+const NextBtn = ({ title, onClick }) => {
+  return (
+    <button type="submit" className={styles.nextBtn} onClick={(e) => {
+      e.preventDefault()
+      onClick()
+    }}>{title}</button>
+  )
+}
+
+const PrevBtn = ({ title, onClick }) => {
+  return (
+    <button type="submit" className={styles.prevBtn} onClick={(e) => {
+      e.preventDefault()
+      onClick()
+    }}>{title}</button>
+  )
+}
+
+const FormStep1 = ({handleNextStep}) => {
   const [selectedWeekIndex, setSelectedWeekIndex] = useState(0)
   
   const handleWeekChange = (event) => {
@@ -93,6 +145,31 @@ const FormStep1 = () => {
     '2024/04/15 ~ 2024/04/21',
     '2024/04/22 ~ 2024/04/28'
   ]
+
+  const timeData = [{
+    title: '10:00 ~ 13:00',
+    value: 'time1'
+  }, {
+    title: '14:00 ~ 17:30',
+    value: 'time2'
+  }, {
+    title: '18:30 ~ 21:00',
+    value: 'time3'
+  }]
+  
+  const doctorData = [{
+    title: '不指定',
+    value: 'doctor0'
+  }, {
+    title: '王豬皮 醫師(1診)',
+    value: 'doctor1'
+  }, {
+    title: '陳花乾 醫師(2診)',
+    value: 'doctor2'
+  },{
+    title: '許嘟嘟 醫師(3診)',
+    value: 'doctor3'
+  }]
   
   return (
     <div className={styles.formContainer}>
@@ -120,34 +197,29 @@ const FormStep1 = () => {
           weeks={weeks}
         />
         <h3 className={styles.formTitle}>請選擇時段</h3>
-        <div className={styles.btnGroup}>
-          <input type="radio" name="time" id="time1" value="time1" />
-          <label htmlFor="time1" className={styles.timeBtn}>10:00 ~ 13:00</label>
-          <input type="radio" name="time" id="time2" value="time2" />
-          <label htmlFor="time2" className={styles.timeBtn}>14:00 ~ 17:30</label>
-          <input type="radio" name="time" id="time3" value="time3" />
-          <label htmlFor="time3" className={styles.timeBtn}>18:30 ~ 21:00</label>
-        </div>
+        <BtnGroup
+          name={'time'}
+          className={styles.timeBtn}
+          datas={timeData}
+          />
         <h3 className={styles.formTitle}>請選擇門診</h3>
-        <div className={styles.btnGroup}>
-          <input type="radio" name="doctor" id="doctor1" value="doctor1" />
-          <label htmlFor="doctor1" className={styles.doctorBtn}>不指定</label>
-          <input type="radio" name="doctor" id="doctor2" value="doctor2" />
-          <label htmlFor="doctor2" className={styles.doctorBtn}>王豬皮 醫師(1診)</label>
-          <input type="radio" name="doctor" id="doctor3" value="doctor3" />
-          <label htmlFor="doctor3" className={styles.doctorBtn}>陳花乾 醫師(2診)</label>
-          <input type="radio" name="doctor" id="doctor4" value="doctor4" />
-          <label htmlFor="doctor4" className={styles.doctorBtn}>許嘟嘟 醫師(3診)</label>
-        </div>
+        <BtnGroup
+          name={'doctor'}
+          className={styles.doctorBtn}
+          datas={doctorData}
+          />
       </form>
       <div className={styles.submitBtnGroup}>
-        <button type="submit" className={styles.nextBtn} onClick={(e)=>e.preventDefault() }>下一步</button>
+        <NextBtn
+          title={'下一步'}
+          onClick={handleNextStep}
+        />
       </div>
     </div>
   )
 }
 
-const FormStep2 = () => {
+const FormStep2 = ({handlePrevStep, handleNextStep}) => {
   return (
     <div className={styles.formContainer}>
       <div className={styles.infoWrapper}>
@@ -238,16 +310,20 @@ const FormStep2 = () => {
             </div>
             <div className={styles.infoBdNeuter}>
               <div className={styles.inputGroup}>
+                <label htmlFor="birth" className={styles.inputTitle}>出生年份</label>
+                <input name="birth" id="birth" type="text" placeholder='西元年' autocomplete="auto" className={styles.bdayInput} />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="birth" className={styles.inputTitle}>品種</label>
+                <input name="breed" id="breed" type="text" autocomplete="auto" className={styles.bdayInput} />
+              </div>
+              <div className={styles.inputGroup}>
                 <label htmlFor="petName" className={styles.inputTitle}>絕育狀態</label>
                 <select name="neuter" id="neuter" className={styles.selection}>
                   <option value="null">請選擇</option>
                   <option value="notNeutered">未絕育</option>
                   <option value="neutered">已絕育</option>
                 </select>
-              </div>
-              <div className={styles.inputGroup}>
-                <label htmlFor="birth" className={styles.inputTitle}>出生年份</label>
-                <input name="birth" id="birth" type="text" placeholder='西元年' autocomplete="auto" className={styles.bdayInput} />
               </div>
             </div>
             <div className={styles.inputGroup}>
@@ -263,11 +339,140 @@ const FormStep2 = () => {
         <p className={styles.point}>以上資料將同步至會員中心</p>
       </form>
       <div className={styles.submitBtnGroup}>
-        <button type="submit" className={styles.prevBtn} onClick={(e)=>e.preventDefault() }>上一步</button>
-        <button type="submit" className={styles.nextBtn} onClick={(e)=>e.preventDefault() }>下一步</button>
+        <PrevBtn
+          title={'上一步'}
+          onClick={handlePrevStep}
+        />
+        <NextBtn
+          title={'下一步'}
+          onClick={handleNextStep}
+        />
       </div>
     </div>
   )
 }
 
-export { BookingContainer, StepGroup, FormStep1, FormStep2 };
+const InfotableGroup = ({title, info, mark, icon}) => {
+  return (
+    <div className={styles.infoTableGroup}>
+      <div className={styles.tableTitle}>{title}</div>
+      <div className={styles.tableInfo}>{info}</div>
+      {mark && <div className={styles.tableMark}>{mark}</div>}
+      {icon && <object data={icon} className={styles.infoTableIcon} aria-label="petIcon"> </object>}
+    </div>
+  )
+}
+
+const FormStep3 = ({ handlePrevStep, handleSubmit }) => { 
+  return (
+    <div className={styles.formContainer}>
+      <div className={styles.form}>
+        <div className={styles.infoTable}>
+          <h3 className={styles.formTitle}>預約門診</h3>
+          <InfotableGroup
+            title={'日期'}
+            info={'2024/04/03'}
+            mark={'(星期三)'}
+          />
+          <InfotableGroup
+            title={'時段'}
+            info={'14:00~18:00'}
+          />
+          <InfotableGroup
+            title={'醫師'}
+            info={'王豬皮 醫師'}
+            mark={'(2診)'}
+          /> 
+        </div>
+        <div className={styles.infoTable}>
+          <h3 className={styles.formTitle}>飼主資料</h3>
+          <InfotableGroup
+            title={'姓名'}
+            info={'廖子睿'}
+            mark={'(先生)'}
+          />
+          <InfotableGroup
+            title={'手機號碼'}
+            info={'0912345678'}
+          />
+        </div>
+        <div className={styles.infoTable}>
+          <h3 className={styles.formTitle}>寵物資料</h3>
+          <InfotableGroup
+            title={'寵物1'}
+            info={'豬皮'}
+            mark={'(6歲 · 米克斯)'}
+            icon={'/svg/booking_cat.svg'}         
+          />
+          <InfotableGroup
+            title={'寵物2'}
+            info={'阿啾'}
+            mark={'(12歲 · 波斯貓)'}
+            icon={'/svg/booking_cat.svg'}
+          />
+          <InfotableGroup
+            title={'寵物3'}
+            info={'球球'}
+            mark={'(4歲 · 貴賓犬)'}
+            icon={'/svg/booking_dog.svg'}
+          /> 
+        </div>
+      </div>
+      <div className={styles.submitBtnGroup}>
+        <PrevBtn
+          title={'上一步'}
+          onClick={handlePrevStep}
+        />
+        <NextBtn
+          title={'確認預約'}
+          onClick={handleSubmit}
+        />
+      </div>
+    </div>
+  )
+}
+
+const FormStep4 = () => {
+  const navigate = useNavigate()
+
+  const handleToHomepage = () => {
+    navigate('/')
+  }
+
+  const handleToRecord = () => {
+    alert('to record')
+  }
+
+  return (
+    <div className={styles.formContainer}>
+      <div className={styles.confirmForm}>
+        <h3 className={styles.confirmFormTitle}>你的看診號碼為</h3>
+        <div className={styles.bookingNum}>13.14.15</div>
+        <div className={styles.remind}>
+          請於 <span className={styles.bookingTime}>2024/04/03 (三) 下午 15:00 </span> 前至現場報到等候。<br/>實際看診時間依現場狀況為主，謝謝您的預約！
+        </div>
+        <div className={styles.notice}>
+          <h4 className={styles.noticeTitle}>注意事項</h4>
+          <ul>
+            <li className={styles.note}>若過號將由現場人員依現場狀況安排看診，怒不接受指定時間</li>
+            <li className={styles.note}>若需修改預約時間，請至 會員中心 > 預約記錄 修改</li>
+            <li className={styles.note}>若多次無故未到場報到，本院有權取消會員之預約資格</li>
+            <li className={styles.note}>若有其他疑問敬請來電 0223456789</li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.submitBtnGroup}>
+        <PrevBtn
+          title={'返回首頁'}
+          onClick={handleToHomepage}
+        />
+        <NextBtn
+          title={'查看預約紀錄'}
+          onClick={handleToRecord}
+        />
+      </div>
+    </div>
+  )
+}
+
+export { BookingContainer, StepGroup, FormStep1, FormStep2, FormStep3, FormStep4 };
