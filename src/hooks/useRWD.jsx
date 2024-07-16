@@ -16,7 +16,7 @@ const useRWD = () => {
   useEffect(()=> {
     window.addEventListener('resize', handleRWD)
     handleRWD()
-    
+
     return (()=> {
       window.removeEventListener('resize', handleRWD)
     })

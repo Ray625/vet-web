@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { pathname } = useLocation();
 
-  const navigate = useNavigate()  
+  const navigate = useNavigate()
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
@@ -36,18 +36,18 @@ const AuthProvider = ({ children }) => {
             setCurrentUser(null);
         }
       });
-    
+
       return () => {
           unsubscribe(); // 取消身份驗證狀態改變監聽器
     };
 // eslint-disable-next-line
   }, [])
-  
+
   // 頁面切換時回到頂部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return (
     <AuthContext.Provider value={{
       currentUser,
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
           const result = await signInWithPopup(auth, provider)
           const user = result.user;
           setCurrentUser(user)
-          navigate('/') 
+          navigate('/')
         } catch (error) {
           // eslint-disable-next-line
           const errorCode = error.code;

@@ -59,7 +59,7 @@ const DropdownMenu = ({linkTo, menuList}) => {
   return (
     <ul className={styles.dropdownMenu}>
       {menuList.map((item, index) => <div onClick={() => navigate(`/${linkTo}`)}key={index}>{item}</div>)}
-    </ul>  
+    </ul>
   )
 }
 
@@ -99,28 +99,36 @@ const Header = () => {
     setHamburgerOpen(!hamburgerOpen)
   }
 
+  const handleLogeClick = () => {
+    navigate('/')
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
   return (
     <div className={styles.container} style={{top: tickerOpen ? '44px' : '0'}}>
       <div className={styles.wrapper}>
-        <div className={styles.logo} onClick={() => navigate('/')}></div>
+        <div className={styles.logo} onClick={handleLogeClick}></div>
         <div className={styles.navbarList}>
           <div onClick={() => navigate('/')} className={styles.navbarEntry}>首頁</div>
           <div onClick={() => navigate('/about')} className={styles.navbarEntry}>
             關於我們
-            <DropdownMenu 
+            <DropdownMenu
               linkTo={'about'}
               menuList={['經營理念','專業團隊','診所資訊']} />
           </div>
           <div onClick={() => navigate('/service')} className={styles.navbarEntry}>
             服務項目
-            <DropdownMenu 
+            <DropdownMenu
               linkTo={'service'}
               menuList={['內科','外科','其他專科']} />
           </div>
           <div onClick={() => navigate('/news')} className={styles.navbarEntry}>最新消息</div>
           <div onClick={() => navigate('/contact-us')} className={styles.navbarEntry}>
             聯絡我們
-            <DropdownMenu 
+            <DropdownMenu
               linkTo={'contact-us'}
               menuList={['交通指南','聯絡表單']} />
           </div>
@@ -136,7 +144,7 @@ const Header = () => {
             <div onClick={() => {
               navigate('/login')
             }} className={styles.login}>登入</div>
-          )}          
+          )}
         </div>
         <div className={styles.hamburgerContainer} onClick={handleHamburgerClick}>
           <div className={styles.hamburgerBtn} ref={hamburgerRef} ></div>
