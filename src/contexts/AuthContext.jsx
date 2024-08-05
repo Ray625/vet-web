@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
       });
 
       return () => {
-          unsubscribe(); // 取消身份驗證狀態改變監聽器
+        unsubscribe(); // 取消身份驗證狀態改變監聽器
     };
 // eslint-disable-next-line
   }, [])

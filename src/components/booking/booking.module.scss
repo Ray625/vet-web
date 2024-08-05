@@ -1,4 +1,4 @@
-@use '../styles/style.scss';
+@use '/src/styles/style.scss';
 
 .container {
   position: relative;
@@ -17,7 +17,7 @@
   right: 0;
   width: 100%;
   height: 150px;
-  background-image: url('../../public/img/bookingpage_background.jpg');
+  background-image: url('../../../public/img/bookingpage_background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom 50% center;
@@ -40,7 +40,7 @@
     right: 0;
     height: 600px;
     width: 100%;
-    background-image: url('../../public/img/bookingpage_background2_mobile.png');
+    background-image: url('../../../public/img/bookingpage_background2_mobile.png');
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -140,7 +140,7 @@
   margin-bottom: 16px;
   border-radius: 50%;
   background-color: style.$icon_green;
-  background-image: url(../../public/svg/booking_vector.svg);
+  background-image: url(../../../public/svg/booking_vector.svg);
   background-size: 16px auto;
   background-repeat: no-repeat;
   background-position: center center;
@@ -265,13 +265,17 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('../../public/svg/select_arrow.svg');
+  background-image: url('../../../public/svg/select_arrow.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 14px 8px;
   &:hover {
     cursor: pointer;
   }
+}
+
+.petGenderInput {
+  width: 100px;
 }
 
 .btnGroup {
@@ -440,6 +444,7 @@
   @extend %select;
   justify-content: space-around;
   align-self: flex-start;
+  gap: 16px;
 }
 
 .genderInput {
@@ -459,6 +464,7 @@
 }
 
 .genderLabel {
+  margin-left: 32px;
   position: relative;
   color: style.$black;
   font-size: style.$point-font-size;
@@ -509,8 +515,14 @@
 
 .petInfoInputGroup {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
+  row-gap: 20px;
+}
+
+.petInfoGroup {
+  display: flex;
+  flex-direction: row;
 }
 
 .petInfoInput {
@@ -537,7 +549,7 @@
       left: 50%;
       width: 16px;
       height: 16px;
-      background-image: url(../../public/svg/booking_vector.svg);
+      background-image: url(../../../public/svg/booking_vector.svg);
       background-size: contain;
       background-repeat: no-repeat;
       transform: translate(-50%, -50%);
@@ -565,7 +577,7 @@
   border: 1px solid style.$light_gray;
   border-radius: 24px;
   background-color: style.$white;
-  background-image: url(../../public/svg/booking_plus_circle.svg);
+  background-image: url(../../../public/svg/booking_plus_circle.svg);
   background-size: 22px 22px;
   background-repeat: no-repeat;
   background-position: left 12px center;
@@ -604,7 +616,7 @@
     right: 0;
     width: 22px;
     height: 22px;
-    background-image: url(../../public/svg/booking_delete_circle.svg);
+    background-image: url(../../../public/svg/booking_delete_circle.svg);
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -615,13 +627,13 @@
 
 .petNameInput {
   @extend %input;
-  width: 200px;
+  width: 128px;
 }
 
 .species {
   @extend %select;
   justify-content: flex-start;
-  align-self: flex-end;
+  align-self: center;
 }
 
 .speciesInput {
@@ -650,7 +662,6 @@
   font-size: style.$point-font-size;
   font-weight: 400;
   margin-left: 32px;
-  margin-right: 12px;
   &:hover {
     cursor: pointer;
   }
@@ -666,6 +677,10 @@
     border: 1px solid style.$light_gray;
     transform: translate(-50%, -50%);
   }
+}
+
+.speciesLabel:nth-of-type(1) {
+  margin-right: 12px;
 }
 
 .infoBdNeuter {
@@ -820,7 +835,7 @@
       right: 0;
       width: 100%;
       height: 500%;
-      background-image: url(../../public/img/bookingpage_background3.png);
+      background-image: url(../../../public/img/bookingpage_background3.png);
       background-repeat: no-repeat;
       background-size: contain;
     }
@@ -832,7 +847,7 @@
 
     &::before {
       top: 214px;
-      background-image: url('../../public/img/bookingpage_background2.png');
+      background-image: url('../../../public/img/bookingpage_background2.png');
     }
   }
 
@@ -968,7 +983,7 @@
 
   .nameGroup {
     flex-direction: row;
-    gap: 20px;
+    gap: 16px;
     width: 456px;
     margin-bottom: 24px;
   }
@@ -978,7 +993,7 @@
   }
 
   .gender {
-    justify-content: space-around;
+    justify-content: flex-end;
     align-self: flex-end;
   }
 }

@@ -15,7 +15,7 @@ const ThemeProvider = ({ children }) => {
   const [tickerOpen, setTickerOpen] = useState(true);
   const device = useRWD()
 
-  useEffect(() => { 
+  useEffect(() => {
     if (device === 'mobile') {
       setTickerOpen(false)
     } else if (device === 'PC') {
@@ -24,9 +24,9 @@ const ThemeProvider = ({ children }) => {
   },[device, setTickerOpen])
 
   return (
-    <ThemeContext.Provider value={{ 
-      tickerOpen, 
-      setTickerOpen, 
+    <ThemeContext.Provider value={{
+      tickerOpen,
+      setTickerOpen,
       }}>
       {children}
     </ThemeContext.Provider>
