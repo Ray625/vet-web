@@ -7,12 +7,12 @@ import styles from '../pages/layout.module.scss';
 
 const LoginLayout = () => {
   const device = useRWD()
-  
+
   return (
     <div className={styles.container}>
       {device === 'mobile' && <Header />}
       <Outlet />
-      {device === 'mobile' && <Footer />}      
+      {device === 'mobile' && <Footer />}
     </div>
   )
 }

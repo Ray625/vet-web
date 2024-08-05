@@ -31,11 +31,11 @@ const MobileMenu = forwardRef((props, ref) => {
           )}
           服務項目
         </div>
-        <div onClick={() => navigate('/news')} className={location.pathname === '/news' ? styles.active : styles.entry}>
-          {location.pathname === '/news' && (
+        <div onClick={() => navigate('/photo')} className={location.pathname === '/photo' ? styles.active : styles.entry}>
+          {location.pathname === '/photo' && (
           <img src="svg/footprint.svg" alt="footprint" className={styles.activeImg} />
           )}
-          最新消息
+          照片牆
         </div>
         <div onClick={() => navigate('/contact-us')} className={location.pathname === '/contact-us' ? styles.active : styles.entry}>
           {location.pathname === '/contact-us' && (
@@ -125,7 +125,7 @@ const Header = () => {
               linkTo={'service'}
               menuList={['內科','外科','其他專科']} />
           </div>
-          <div onClick={() => navigate('/news')} className={styles.navbarEntry}>最新消息</div>
+          <div onClick={() => navigate('/photo')} className={styles.navbarEntry}>照片牆</div>
           <div onClick={() => navigate('/contact-us')} className={styles.navbarEntry}>
             聯絡我們
             <DropdownMenu

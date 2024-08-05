@@ -1,0 +1,24 @@
+@use '../styles/style.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.photowall {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 140px 20px 20px 20px;
+}
+
+.img {
+  max-width: 360px;
+  height: auto;
+  border-radius: 12px;
+}
