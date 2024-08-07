@@ -1,8 +1,15 @@
 import styles from './photopage.module.scss'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
+import Masonry from 'react-masonry-css'
 
 const PhotoPage = () => {
   const [photos, setPhotos] = useState([])
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 2,
+    500: 1
+  };
 
   const option = {
     headers: {
@@ -22,17 +29,25 @@ const PhotoPage = () => {
       })
       .then(data => setPhotos(data))
       .catch(error => console.log('error:', error.message))
-  },[])
+  }, [])
+
+  useEffect(() => {
+    console.log('photos:', photos)
+  },[photos])
 
   return (
     <section className={styles.container}>
-      <div className={styles.photowall}>
-        {photos && photos.map(photo => {
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className={styles.waterfall}
+        columnClassName={styles.gridColumn}
+      >
+        {photos.length !== 0 && photos.map(photo => {
           return (
-            <img src={photo.url} alt={photo.id} key={photo.id} className={styles.img} />
+            <img src={photo.url} alt='cat_img' key={photo.id} className={styles.img} />
           )
         })}
-      </div>
+      </Masonry>
     </section>
   )
 }
