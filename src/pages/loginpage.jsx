@@ -29,12 +29,19 @@ const LoginPage = () => {
     if(!password) {
       return alert('請輸入密碼')
     }
-    emailLogin(email, password)
+    emailLogin({ email, password })
   }
 
   return (
     <LoginContainer>
-      {isLoading && <Loading/>}
+      {isLoading &&
+        <Loading
+          position={'fixed'}
+          height={'100vh'}
+          width={'100vw'}
+          background={'#ffffff50'}
+        />
+      }
       <LeftSide
         describe={'Caring for your pets like'}
         focus={'family'}
