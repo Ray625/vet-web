@@ -24,10 +24,10 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     if(!email) {
-      return alert('請輸入Email')           
+      return alert('請輸入Email')
     }
     if(!password) {
-      return alert('請輸入密碼') 
+      return alert('請輸入密碼')
     }
     emailLogin(email, password)
   }
@@ -35,24 +35,24 @@ const LoginPage = () => {
   return (
     <LoginContainer>
       {isLoading && <Loading/>}
-      <LeftSide 
+      <LeftSide
         describe={'Caring for your pets like'}
         focus={'family'}
         img={'url(/img/login_background.png)'}
       />
       <RightSide>
-        <TitleGroup 
+        <TitleGroup
           title={'會員登入'}
           point={'尚未成為會員?'}
           point2={'註冊'}
           onClick={handleSignUpClick}
         />
-        <GoogleBtn 
+        <GoogleBtn
           title={'登入'}
           onClick={handleGoogleLogin}
         />
         <FormGroup btnText={'登入'} onSubmit={onSubmit}>
-          <InputGroup 
+          <InputGroup
             title={'Email'}
             name={'email'}
             type={'email'}
@@ -61,7 +61,7 @@ const LoginPage = () => {
             autocomplete={'email'}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <InputGroup 
+          <InputGroup
             title={'密碼'}
             name={'password'}
             type={'password'}

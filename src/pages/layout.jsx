@@ -8,11 +8,11 @@ import styles from '../pages/layout.module.scss';
 
 const Layout = () => {
   const {tickerOpen, setTickerOpen} = useTheme()
-  
+
   const handleTickerCloseBtnClick = () => {
     setTickerOpen(false)
   }
-  
+
   return (
     <div className={styles.container}>
       {tickerOpen && <Ticker onClick={handleTickerCloseBtnClick}/>}
