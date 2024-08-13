@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       currentUser,
       isLoading,
-      emailRegister: async (email, password, firstName, lastName) => {
+      emailRegister: async ({ email, password, firstName, lastName }) => {
         try {
           setIsLoading(true)
           const userCredential = await createUserWithEmailAndPassword(auth, email, password)
@@ -81,7 +81,7 @@ const AuthProvider = ({ children }) => {
           const errorCode = error.code;
         }
       },
-      emailLogin: async (email, password) => {
+      emailLogin: async ({ email, password }) => {
         try {
           setIsLoading(true)
           const userCredential = await signInWithEmailAndPassword(auth, email, password)
